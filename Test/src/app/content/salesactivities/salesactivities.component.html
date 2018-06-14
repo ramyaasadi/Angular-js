@@ -1,0 +1,19 @@
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 subjobs-info">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 subjobs-tabs padding0">
+               <ul>
+                 <li>  <a [routerLink]="['/Content/Sales', 'my']" routerLinkActive="router-link-active" #myActivties="routerLinkActive" > 
+                           <img [src]="myActivties.isActive?'../assets/images/my_activity_.png':'../assets/images/my_activity.png'">&nbsp;My Activities</a> 
+                  </li>
+                 <li> 
+                    <a [routerLink]="['/Content/Sales', 'all']" routerLinkActive="router-link-active" #allActivities="routerLinkActive" >
+                    <img [src]="allActivities.isActive?'../assets/images/all_activity_.png':'../assets/images/all_activity.png'"> &nbsp;All Activities</a>
+                 </li>
+               </ul>
+           </div>
+           <div *ngIf="myActivties.isActive">
+                <salesactivities-grid></salesactivities-grid>
+           </div>
+           <div *ngIf="allActivities.isActive">
+               <salesactivities-grid-all></salesactivities-grid-all>
+           </div>
+</div>

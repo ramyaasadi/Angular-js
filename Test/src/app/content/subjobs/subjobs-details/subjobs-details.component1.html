@@ -1,0 +1,274 @@
+<div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                
+          <div class="col-lg-2 col-md-2 col-sm-push-12 col-xs-push-12 text-right new-job">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-left" style="float:left;margin-bottom:20px;">
+                        <span style="color:#0033cc;font-size:25px;">File Details</span>
+                 </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 job-status text-center" style="padding:0px;">
+                        <img [src]="jobImage" *ngIf="fileDetails !==undefined && fileDetails.jobType !== undefined" title="{{fileDetails.jobType}}">
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 job-status text-center" style="padding:0px;float:left;margin:0px 0% 0px 0%;">
+                    <span class="{{this.changeStyle}}" *ngIf="fileDetails !==undefined && fileDetails.status !== undefined">{{fileDetails.status}}</span>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 job-add" style="padding:0px 13px 0px 0px;width:100%;" *ngIf="fileDetails !==undefined && fileDetails.mastNumCode !== undefined">
+                    <a routerLink="/Content/MasterNumber/MasterNumberDetails/{{fileDetails.mastNumHash}}" style="color:#FFF;" title="Back To Master Number Details"><span class="job-icon"><img src="../assets/images/back-arrow.png"></span>
+                    <span class="job-text" style="display:block;text-align:center;">{{fileDetails.mastNumCode}}</span></a>
+                 </div>
+                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right all-pics" style="cursor:pointer;">
+                    <!-- <a href="#"> -->
+                        <span class="pic-icon"><img src="../assets/images/picture.png"></span><span>Pictures</span>
+                    <!-- </a> -->
+                </div>
+         </div>
+          <div class="col-lg-10 col-md-10 col-sm-pull-12 col-xs-pull-12" style="float:left">
+              <!-- <subjobs-data [insurances]="insurances"></subjobs-data> -->
+              <subjobs-data [fileDetails]="fileDetails" [insurances]="insurances" [description]="description" (update)="updateFileData($event)" (updateDesc)="updateDescription($event)"></subjobs-data>
+          </div>
+        </div>
+         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0 jobs-details">
+          <div class="row">
+                <!-- <div class="subjob-div">
+                   <common-notes></common-notes>
+                </div> -->
+             
+              
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="float:left;">
+                    <subjob-note [note]="notes" (addNotes)="saveNotes($event);"></subjob-note>
+              </div>
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 note-diff cont-roles-mile" style="float:left;">
+                            <span style="display:block;cursor:pointer;text-align:right;" *ngIf="tabIndex==0"><img src="../assets/images/edit_icon.png" (click)="showDialog()"></span>
+                            <span style="display:block;cursor:pointer;text-align:right;" *ngIf="tabIndex==1"><img src="../assets/images/edit_icon.png" (click)="showDialog1()"></span>
+                            <p-tabView [activeIndex]="tabIndex" (onChange)="changeTab($event);">
+                                <p-tabPanel header="Contacts" [selected]="true">
+                                    <p-scrollPanel [style]="{width: '100%', height: '200px', background: '#FFF'}">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 note-table padding0" style="float:left;padding-bottom:0px;">
+                                                <common-contacts1 [contacts]="contacts"></common-contacts1>
+                                        </div>
+                                    </p-scrollPanel>
+                                </p-tabPanel>
+                                <p-tabPanel header="Roles">
+                                    <p-scrollPanel [style]="{width: '100%', height: '200px', background: '#FFF'}">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 note-table padding0" style="float:left;">
+                                                <common-roles [roles]="roles"></common-roles>
+                                        </div>
+                                    </p-scrollPanel>
+                                </p-tabPanel>
+                                <p-tabPanel header="Milestone">
+                                    <p-scrollPanel [style]="{width: '100%', height: '200px', background: '#FFF'}">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 note-table padding0" style="float:left;padding:5px 0px;">
+                                                <common-milestone></common-milestone>
+                                        </div>
+                                    </p-scrollPanel>
+                                </p-tabPanel>
+                            </p-tabView>
+                        </div>
+              </div>
+              <!-- <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 padding0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="float:left;">
+                         <common-contacts1 [mastNumHash]="parameterID" [contactsFor]="MasterNumber"></common-contacts1>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="float:left;margin-top:10px;">
+                        <common-roles></common-roles>
+                    </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="float:left;margin-bottom:10px;">
+                          <common-milestone></common-milestone>
+                        </div>
+                   
+                    
+                </div> -->
+          </div>
+         </div>
+         
+         <!--  -->
+
+         
+         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+           <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 padding0" style="float:left">
+             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="float:left">
+               <!-- <subjob-pictures></subjob-pictures> -->
+               <subjob-tasks></subjob-tasks>
+             </div>
+           </div>
+           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 padding0" style="float:left">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="float:left">
+                <subjob-documents [documents]="documents" (addDocument)="saveDocument($event);" (deletedDocuments)="deleteDocuments($event);"></subjob-documents>
+              </div>
+           </div>
+         </div>
+         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="float:left">
+                <subjob-financial></subjob-financial>
+            </div>
+         </div>
+     
+      </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 new-one" style="float:left;">
+            <p-dialog header="Contact" [(visible)]="display" modal="modal" width="350" [responsive]="true">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                      <basiccontact-form [contacts]="contacts" [refSource]="refSource" (updateContact)="updateContacts($event)"></basiccontact-form>
+                      <button type="button" (click)="display=false" style="background:#333;color:#FFF;padding:3px 10px;cursor:pointer;border:none;float:right;margin-top:-39px;"><i class="fa fa-times"></i>&nbsp;Cancel</button>
+                  </div>
+                <!-- <p-footer>
+                    <button type="button"  (click)="display=false" style="background:#333;color:#FFF;padding:3px 10px;cursor:pointer;border:none;"><i class="fa fa-check"></i>&nbsp;Create</button>
+                        <button type="button" (click)="display=false" style="background:#333;color:#FFF;padding:3px 10px;cursor:pointer;border:none;"><i class="fa fa-times"></i>&nbsp;Cancel</button>
+                </p-footer> -->
+            </p-dialog>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 new-one" style="float:left;">
+            <p-dialog header="Role" [(visible)]="display1" modal="modal" width="350" [responsive]="true">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  with-add part-info padding0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Supervisor</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <p-autoComplete 
+                                [(ngModel)]="supervisor" 
+                                [suggestions]="filteredSupervisors" 
+                                (completeMethod)="filterSupervisor($event)" 
+                                field="fullName"
+                                [size]="30"
+                                [forceSelection]="true"
+                                [dropdown]="true"
+                                placeholder="Supervisor" 
+                                name="supervisor">
+                                </p-autoComplete>
+                                <span (click)="showDialog2('Supervisor')"><img src="./assets/images/add.png"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  with-add part-info padding0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Estimator</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <p-autoComplete 
+                                [(ngModel)]="estimator" 
+                                [suggestions]="filteredEstimators" 
+                                (completeMethod)="filterEstimator($event)" 
+                                field="fullName"
+                                [size]="30"
+                                [forceSelection]="true"
+                                [dropdown]="true"
+                                placeholder="Estimator" 
+                                name="estimator">
+                                </p-autoComplete>
+                                <span (click)="showDialog2('Estimator')"><img src="./assets/images/add.png"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  with-add part-info padding0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Co-Ordinator</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <p-autoComplete 
+                                [(ngModel)]="coordinator" 
+                                [suggestions]="filteredCoordinators" 
+                                (completeMethod)="filterCoordinator($event)" 
+                                field="fullName"
+                                [size]="30"
+                                [forceSelection]="true"
+                                [dropdown]="true"
+                                placeholder="Co-Ordinator" 
+                                name="coordinator">
+                                </p-autoComplete>
+                                <span (click)="showDialog2('Coordinator')"><img src="./assets/images/add.png"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  with-add part-info padding0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Finance</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <p-autoComplete 
+                                [(ngModel)]="finance" 
+                                [suggestions]="filteredFinance" 
+                                (completeMethod)="filterFinance($event)" 
+                                field="fullName"
+                                [size]="30"
+                                [forceSelection]="true"
+                                [dropdown]="true"
+                                placeholder="Finance" 
+                                name="finance">
+                                </p-autoComplete>
+                                <span (click)="showDialog2('Finance')"><img src="./assets/images/add.png"></span>
+                            </div>
+                        </div>
+                <p-footer>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;margin:8px 0px;">
+                    <button type="button"  (click)="updateRoles();display1=false;" style="background:#333;color:#FFF;padding:3px 10px;cursor:pointer;border:none;"><i class="fa fa-check"></i>&nbsp;Update</button>
+                    <button type="button" (click)="display1=false" style="background:#333;color:#FFF;padding:3px 10px;cursor:pointer;border:none;"><i class="fa fa-times"></i>&nbsp;Cancel</button>
+                  </div>
+                </p-footer>
+            </p-dialog>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 new-one" style="float:left;">
+            <p-dialog header="Add New Role" [(visible)]="display2" modal="modal" [responsive]="true" [width]="350">
+                 <form #newContact="ngForm" (submit)="saveContactData(newContact);" method="POST">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 part-info padding0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">First Name</div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                            <input type="text" [ngModel]="contactDetails?.firstName" name="contactDetails.firstName" class="form-control"
+                                        (ngModelChange)="contactDetails.firstName = $event" required #conFirstName="ngModel"/>
+                            <div [hidden]="conFirstName.valid || (conFirstName.pristine && !newContact.submitted)" style="color:rgb(202, 10, 10);font-weight:600;letter-spacing:0.7px;">
+                                    First Name is required.	
+                            </div> 
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 part-info padding0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Last Name</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <input type="text" [ngModel]="contactDetails?.lastName" name="contactDetails.lastName" 
+                                        (ngModelChange)="contactDetails.lastName = $event" required #conLastName="ngModel"/>
+                                <div [hidden]="conLastName.valid || (conLastName.pristine && !newContact.submitted)" style="color:rgb(202, 10, 10);font-weight:600;letter-spacing:0.7px;">
+                                        Last Name is required.	
+                                </div>
+                        </div>
+                </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 part-info padding0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Email</div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                            <input type="text" [ngModel]="contactDetails?.email" name="contactDetails.email"
+                                (ngModelChange)="contactDetails.email = $event" [pattern]="emailPattern"
+                                    (ngModelChange)="email=$event"   
+                                    #contactEmail="ngModel"> 
+                            <div *ngIf="contactEmail.errors"> 
+                                <div *ngIf="contactEmail.errors.pattern" style="color:rgb(202, 10, 10);font-weight:600;letter-spacing:0.5px;"> 
+                                    Email is invalid
+                                </div>	
+                            </div> 
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 part-info padding0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Phone Number</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <p-inputMask mask="(999) 999-9999" type="text" [ngModel]="contactDetails?.phoneNo" name="contactDetails.phoneNo"
+                                (ngModelChange)="contactDetails.phoneNo = $event" placeholder="(999) 999-9999"></p-inputMask>
+                        </div>
+                </div>
+        </div>
+        <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 part-info padding0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Role</div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                        <select>
+                            <option>Select</option>
+                            <option>Supervisor</option>
+                            <option>Estimator</option>
+                            <option>Co-Ordinator</option>
+                            <option>Finance</option>
+                        </select>
+                    </div>
+                </div>
+        </div> -->
+        <p-footer>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;text-align:right;margin:8px 0px;">
+                <button type="submit"  style="background:#333;color:#FFF;padding:3px 10px;cursor:pointer;border:none;"><i class="fa fa-check"></i>&nbsp;Create</button>
+                <button type="button" (click)="display2=false;newContact.submitted=false;" style="background:#333;color:#FFF;padding:3px 10px;cursor:pointer;border:none;"><i class="fa fa-times"></i>&nbsp;Cancel</button>
+            </div>
+        </p-footer>
+        </form>
+            </p-dialog>
+        </div>
+
+        <div class="content-section implementation">
+            <p-growl [(value)]="msgs"></p-growl>
+        </div>

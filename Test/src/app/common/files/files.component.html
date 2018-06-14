@@ -1,0 +1,51 @@
+<div class="row">
+   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 job-head padding0">
+     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 job-headLeft" style="padding-left:0px;">
+         <!--<img src="../assets/images/document_job.png">--> Document
+       </div>
+     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 job-headRight text-right">
+         <img src="../assets/images/add.png">
+       </div>
+   </div>
+   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 job-fullinfo file">
+            <!--<img src="../assets/images/job_view.png">-->
+        <div class="file-row" *ngFor="let document of documents">
+             <div class="row paddingT5">
+               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0">
+                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 file-text padding0">Document Name</div>
+                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 file-value padding0">{{document.name}}</div>
+                </div>
+                <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 padding0">
+                   <img src="../assets/images/view_detail_doc.png">
+                 </div>-->
+              </div>
+              <div class="row paddingT5">
+                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 file-text padding0">Type</div>
+                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 file-value padding0">{{document.type}}</div>
+              </div>
+              <div class="row paddingT5">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 file-text padding0">Uploaded By</div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 file-value padding0">{{document.uploadby}}</div>
+              </div>
+              <div class="row paddingT5">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 file-text padding0">Uploaded Date&Time</div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 file-value padding0">{{document.uploaddttm}}</div>
+              </div>
+        </div>
+        <!--<div class="file-row">
+             <div class="row paddingT5">
+               <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 padding0">
+                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 file-text padding0">Document Name</div>
+                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 file-value padding0">Floor Damage</div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 padding0">
+                   <img src="../assets/images/view_detail_doc.png">
+                 </div>
+              </div>
+              <div class="row paddingT5">
+                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 file-text padding0">Type</div>
+                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 file-value padding0">Image</div>
+              </div>
+        </div>-->
+   </div>
+</div>

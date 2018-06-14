@@ -1,0 +1,50 @@
+<div class="login-div">
+    <div class="login-left">
+       <div class="login-type">
+           &nbsp;
+          <!--<ul>
+            <a href="#" >
+                <li>
+                  <span><img src="../assets/images/user-signin.png"/></span>
+                  <span>LOGIN</span>
+                </li>
+            </a>
+            <a href="#">
+                <li>
+                    <span><img src="../assets/images/signup-icon.png"/></span>
+                    <span>SIGN UP</span>
+                </li>
+            </a>
+          </ul> -->
+       </div>
+       <div class="basic-info">
+          <span class="wel-text">Welcome to <img src="../assets/images/white-logo.png"/></span>
+           <span class="cmpny-text">Welcome to Xcelerate, the most innovative restoration job management software available.  Built from an in-the-field perspective, Xcelerate is uniquely equipped to increase your operational efficiency, improve your profitability, and elevate both your job and team management. <br/>This is everything you need to restore your power to succeed, all in one place, in one user-friendly platform.</span>
+           <span style="display:bloc;font-weight:bold;font-size:20px;">Now, Xcelerate your success! </span>
+       </div>
+    </div>
+    <div class="login-right">
+       <div class="logo-login">
+           <img class="logo" src="../assets/images/logo_256_1.png">
+       </div>
+       <div class="login-form">
+    <span> <font color="red"> {{loginErrorMessage}}</font></span>
+
+<form #f="ngForm" novalidate (ngSubmit)="validateUser(f.value)">
+           <span><input type="text" name="userName" ngModel  placeholder="User Name"/></span>
+           <span><input type="password" name="password" ngModel placeholder="Password"/></span>
+  <input type="submit" class="submit-btn">
+</form>
+
+<!--
+           <span><input type="text" name="userName" placeholder="User Name"/></span>
+           <span><input type="password" name="password" placeholder="Password"/></span>
+           <!--<span class="fgpwd">Forgot Password?</span>
+           <a routerLink="/Dashboard" ><span><img src="../assets/images/login-arrow.png" width="90px"/></span></a>
+                <span><img src="../assets/images/login-arrow.png" (click)="validateUser()" width="90px"/></span>               
+-->
+       </div>
+    </div>
+</div>
+
+

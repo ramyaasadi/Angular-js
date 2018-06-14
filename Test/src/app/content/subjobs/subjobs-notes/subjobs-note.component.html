@@ -1,0 +1,124 @@
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 note-diff" style="float:left;padding:0px;">
+        <span style="display:block;cursor:pointer;text-align:right;" ><img src="../assets/images/add.png" (click)="showDialog()"></span>
+        <p-tabView (onChange)="onTabChange($event)">
+            <p-tabPanel header="All Notes" [selected]="true">
+                <p-scrollPanel [style]="{width: '100%', height: '200px', background: '#FFF'}">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 note-table padding0" style="float:left;padding-bottom:20px;">
+                        <p-table [value]="notes" >
+                            <ng-template pTemplate="body" let-note >
+                                <tr>
+                                    <th>{{note.note}}</th>
+                                    <td>{{note.noteby}}</td>
+                                    <td>{{note.datetime | date: 'MM/dd/yyyy'}}</td>  
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                        
+                        <span *ngIf="notes==false" style="display:block;margin-top:20px;text-align:center;color:#4d4d4d;font-size:20px;opacity:0.6;">Notes are not Available.</span>
+                    </div>
+                </p-scrollPanel>
+            </p-tabPanel>
+
+            <p-tabPanel header="Operational Notes">
+                <p-scrollPanel [style]="{width: '100%',  height: '200px', background: '#FFF'}">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 note-table padding0" style="float:left;">
+                        <p-table [value]="operationalNotes" >
+                            <ng-template pTemplate="body" let-note >
+                                <tr>
+                                    <th>{{note.note}}</th>
+                                    <td>{{note.noteby}}</td>
+                                    <td>{{note.datetime | date: 'MM/dd/yyyy'}}</td> 
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                        <span *ngIf="operationalNotes==false" style="display:block;margin-top:20px;text-align:center;color:#4d4d4d;font-size:20px;opacity:0.6;">Operational Notes are not Available.</span>
+                    </div>
+                </p-scrollPanel>
+            </p-tabPanel>
+
+            <p-tabPanel header="Financial Notes">
+                <p-scrollPanel [style]="{width: '100%',  height: '200px', background: '#FFF'}">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 note-table padding0" style="float:left;">
+                        <p-table [value]="financialNotes" >
+                            <ng-template pTemplate="body" let-note >
+                                <tr>
+                                    <th>{{note.note}}</th>
+                                    <td>{{note.noteby}}</td>
+                                    <td>{{note.datetime | date: 'MM/dd/yyyy'}}</td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                        <span *ngIf="financialNotes==false" style="display:block;margin-top:20px;text-align:center;color:#4d4d4d;font-size:20px;opacity:0.6;">Financial Notes are not Available.</span>
+                    </div>
+                </p-scrollPanel>
+            </p-tabPanel>
+
+            <p-tabPanel header="Sub Contractor Notes">
+                <p-scrollPanel [style]="{width: '100%',  height: '200px', background: '#FFF'}">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 note-table padding0" style="float:left;">
+                    <p-table [value]="subContractorNotes" >
+                        <ng-template pTemplate="body" let-note >
+                                <tr>
+                                    <th>{{note.note}}</th>
+                                    <td>{{note.noteby}}</td>
+                                    <td>{{note.datetime | date: 'MM/dd/yyyy'}}</td>
+                                </tr>
+                        </ng-template>
+                    </p-table>
+                    <span *ngIf="subContractorNotes==false" style="display:block;margin-top:20px;text-align:center;color:#4d4d4d;font-size:20px;opacity:0.6;">Sub Contractor Notes are not Available.</span>
+                </div>
+                </p-scrollPanel>
+            </p-tabPanel>
+
+            <p-tabPanel header="Internal Notes">
+                <p-scrollPanel [style]="{width: '100%',  height: '200px', background: '#FFF'}">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 note-table padding0" style="float:left;">
+                    <p-table [value]="internalNotes" >
+                        <ng-template pTemplate="body" let-note >
+                                <tr>
+                                    <th>{{note.note}}</th>
+                                    <td>{{note.noteby}}</td>
+                                    <td>{{note.datetime | date: 'MM/dd/yyyy'}}</td>
+                                </tr>
+                        </ng-template>
+                    </p-table>
+                    <span *ngIf="internalNotes==false" style="display:block;margin-top:20px;text-align:center;color:#4d4d4d;font-size:20px;opacity:0.6;">Internal Notes are not Available.</span>
+                </div>
+                </p-scrollPanel>
+            </p-tabPanel>
+        </p-tabView>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 new-one" style="float:left;">
+            <p-dialog header="Note" [(visible)]="display" modal="modal" width="550" [responsive]="true">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 part-info padding0">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Notes</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                   <select [(ngModel)]="category" required name="category" [disabled]="isSelected">
+                                       <option>Operational Notes</option>
+                                       <option>Financial Notes</option>
+                                       <option>SubContractor Notes</option>
+                                       <option>Internal Notes</option>
+                                   </select>
+                                   <div [hidden]="isValidNotes" style="color:rgb(202, 10, 10);font-weight:600;letter-spacing:0.7px;">
+                                        Notes is required.	
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 part-info padding0">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Notes Description</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                    <textarea style="width:100%;height:80px;" [(ngModel)]="description" required name="description"></textarea>
+                                    <div [hidden]="isValidDesc" style="color:rgb(202, 10, 10);font-weight:600;letter-spacing:0.7px;">
+                                        Notes Description is required.	
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <p-footer>
+                        <button type="submit" pButton icon="fa-check" (click)="saveNotes();" label="Create"></button>
+                        <button type="button" pButton icon="fa-close" (click)="display=false;" label="Cancel"></button>
+                    </p-footer>
+             </p-dialog>
+      </div>

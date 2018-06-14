@@ -1,0 +1,215 @@
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0">
+   <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 job-head padding0" style="margin-top:10px;">
+     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 job-headLeft" style="padding-left:0px;">
+         Contacts
+       </div>
+     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 job-headRight text-right">
+         <img src="../assets/images/edit_icon.png" (click)="showDialog()">
+       </div>
+   </div> -->
+     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 job-fullinfo contact" style="border:none;background:transparent;height:auto;">
+
+            <!-- <p-scrollPanel [style]="{width: '100%', height: '120px'}">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="float:left;padding-bottom:20px;padding-left:0px;padding-right:0px;"> -->
+                  <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;" *ngFor="let contact of contacts">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="float:left;padding:0px;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="float:left;padding-top:5px;padding-bottom:5px;border-bottom:1px solid #354964;box-sizing:border-box;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 contact-row" style="margin:2px 0px;">
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 contact-value padding0">
+                                {{contact.firstName}}&nbsp;{{contact.lastName}} <span style="float:right;">{{contact.phoneNo}}</span>
+                              </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 contact-row" style="padding:0px;margin:2px 0px;">
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 contact-value padding0">{{contact.contactType}}</div>
+                            </div>
+                        </div>
+                    </div>
+                  </div> -->
+                  <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="float:left;padding:0px;">
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="float:left;padding-top:5px;padding-bottom:5px;border-bottom:1px solid #354964;box-sizing:border-box;">
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 contact-row padding0" style="margin:2px 0px;">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 contact-value padding0" style="float:left;">
+                                   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-left padding0" style="float:left;"> James Anderson</div>
+                                   <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 text-center padding0" style="float:left;"> 124-282-7491 </div>
+                                   <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 text-right padding0" style="float:left;">Third Party Administrator</div>
+                                </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="float:left;padding-top:5px;padding-bottom:5px;border-bottom:1px solid #354964;box-sizing:border-box;">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 contact-row padding0" style="margin:2px 0px;">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 contact-value padding0" style="float:left;">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-left padding0" style="float:left;">Olivia Boon</div>
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 text-center padding0" style="float:left;">566-546-7889</div>
+                                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 text-right padding0" style="float:left;">Sales Representative</div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="float:left;padding-top:5px;padding-bottom:5px;border-bottom:1px solid #354964;box-sizing:border-box;">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 contact-row padding0" style="margin:2px 0px;">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 contact-value padding0" style="float:left;">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-left padding0" style="float:left;">John Abhraham</div>
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 text-center padding0" style="float:left;">546-787-4445</div>
+                                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 text-right padding0" style="float:left;">Adjuster</div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="float:left;padding-top:5px;padding-bottom:5px;border-bottom:1px solid #354964;box-sizing:border-box;">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 contact-row padding0" style="margin:2px 0px;">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 contact-value padding0" style="float:left;">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-left padding0" style="float:left;">James Wilson</div> 
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 text-center padding0" style="float:left;">867-787-2234</div> 
+                                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 text-right padding0" style="float:left;">Insurance Agent</div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                    </div> -->
+                <!-- </div>
+             </p-scrollPanel> -->
+             <!-- <span style="position:absolute;top:-59px;right:15px;cursor:pointer;"> <img src="../assets/images/edit_icon.png" (click)="showDialog()"></span> -->
+             <div  *ngFor="let contact of contacts" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;margin:5px 0px;border-bottom:1px solid #CCC;box-sizing:border-box;">
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 padding0" style="float:left">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Company Name</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">{{contact.companyName}}</div>
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 padding0" style="float:left">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">First Name</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">{{contact.firstName}}</div>
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 padding0" style="float:left">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Last Name</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">{{contact.lastName}}</div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 padding0" style="float:left">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Email</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">{{contact.email}}</div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 padding0" style="float:left">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Phone Number</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">{{contact.phoneNo}}</div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 padding0" style="float:left">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Address</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">{{contact.address}}&nbsp;{{contact.city}}&nbsp;{{contact.state}}&nbsp;{{contact.zip}}</div>
+                    </div>
+                </div>
+                 <div  *ngIf="contacts==false" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;margin:5px 0px;border-bottom:1px solid #CCC;box-sizing:border-box;">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 padding0" style="float:left">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Company Name</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">&nbsp;</div>
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 padding0" style="float:left">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">First Name</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">&nbsp;</div>
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 padding0" style="float:left">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Last Name</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">&nbsp;</div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 padding0" style="float:left">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Email</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">&nbsp;</div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 padding0" style="float:left">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Phone Number</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">&nbsp;</div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 padding0" style="float:left">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Address</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">&nbsp;</div>
+                        </div>
+                    </div>
+                <!-- <span *ngIf="contacts==false" style="display:block;text-align:center;color:#4d4d4d;font-size:20px;opacity:0.6;margin-top:20px;">Contacts are not Available.</span> -->
+        <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;margin:5px 0px;border-bottom:1px solid #CCC;box-sizing:border-box;">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 padding0" style="float:left">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Company Name</div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">Progressive</div>
+                </div>
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 padding0" style="float:left">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">First Name</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">Raquel</div>
+                </div>
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 padding0" style="float:left">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Last Name</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">Cox</div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 padding0" style="float:left">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Email</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">raquel@gmail.com</div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 padding0" style="float:left">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Phone Number</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">435 556 6542</div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 padding0" style="float:left">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Address</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">2620 Front Street,AMARILLO,TX,79109.</div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;margin:5px 0px;border-bottom:1px solid #CCC;box-sizing:border-box;">
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 padding0" style="float:left">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Company Name</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">All State</div>
+                    </div>
+                    <div class="col-lg-1 col-md-12 col-sm-1 col-xs-12 padding0" style="float:left">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">First Name</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">Wilfred</div>
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 padding0" style="float:left">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Last Name</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">Andrews</div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 padding0" style="float:left">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Email</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">wilfred@gmail.com</div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 padding0" style="float:left">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Phone Number</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">435 654 5562</div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 padding0" style="float:left">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Address</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">1043 White Avenue,Corpus Christi,TX,78476.</div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;margin:5px 0px;border-bottom:1px solid #CCC;box-sizing:border-box;">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 padding0" style="float:left">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Company Name</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">TheHartFord</div>
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 padding0" style="float:left">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">First Name</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">Angela</div>
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 padding0" style="float:left">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Last Name</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">Wood</div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 padding0" style="float:left">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Email</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">angela@gmail.com</div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 padding0" style="float:left">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Phone Number</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">455 566 6354</div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 padding0" style="float:left">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Address</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">2148 Don Jackson Lane,Detroit,MI,48219.</div>
+                        </div>
+                    </div> -->
+   </div>
+</div>
+
+<!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 new-one" style="float:left;">
+    <p-dialog header="Edit Contact" [(visible)]="display" modal="modal" width="350" [responsive]="true">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+              <basiccontact-form></basiccontact-form>
+          </div>
+        <p-footer>
+            <button type="button"  (click)="display=false" style="background:#333;color:#FFF;padding:3px 10px;cursor:pointer;border:none;"><i class="fa fa-arrow-up"></i>&nbsp;Update</button>
+                <button type="button" (click)="display=false" style="background:#333;color:#FFF;padding:3px 10px;cursor:pointer;border:none;"><i class="fa fa-times"></i>&nbsp;Cancel</button>
+        </p-footer>
+    </p-dialog>
+</div> -->

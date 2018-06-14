@@ -1,0 +1,272 @@
+<html>
+  <head>
+    <style>
+      html,body{padding: 0px;margin: 0px;background: #E6E6E6;font-family: "Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";}  
+        .wrapper{width: 100%;padding: 0px;margin: 0px;float: left;overflow: hidden;}
+        .part{width: 58%;padding: 0px;margin:5px 1%;float: left;overflow: hidden;}
+        .title{width: 100%;float: left;padding: 5px 0px;margin:0px 0%;color: #009cb8;font-size: 20px;text-shadow: 1px 1px 2px rgba(150, 150, 150, 1);letter-spacing: 0.5px;}
+        .title-info{background: #FFF;padding: 8px;margin: 5px 0%;float: left;width: 100%;border: 1px solid #CCC;box-sizing: border-box;}
+        .field-div{width:20%;float: left;padding: 0px;margin: 0px 0px 5px 0px;}
+        .field-text{width: 100%;float: left;padding: 0px; font-size: 11px;margin: 0px;color: #c2c2c2;font-weight: 500;letter-spacing: 0.5px;}
+        .field-value{width: 100%;padding: 0px;margin: 0px;float: left;font-size: 11px;color: #4a4a4a;font-weight: 500;}
+        .part2{width:100%;float: left;padding: 0px;margin: 0px 0%;}
+        .part2 .title{width: 100%;margin: 0px;}
+        .part2 .title-info{width: 100%;margin-top: 0px;margin-left: 0px;margin-right: 0px;}
+/*        .part2 .field-div{width: 45%;}*/
+        .part3{width: 100%;float: left;padding: 0px;margin: 0px 0%;}
+        .part3 .title-info{margin-top: 0px;}
+        
+        .sign-div{width: 58%;float: left;padding: 0px 20px;margin: 20px 0px 0px 0px;}
+        .sign-thanks{width: 100%; font-size: 16px;color: #666666;float: left;font-weight: 500;letter-spacing: 0.3px;}
+        .sign-name{width: 100%;font-size: 20px;color: #333333;float: left;font-weight: 600;letter-spacing: 0.3px;}
+        .discalim{width:58%;float: left;border-top:1px solid #333333;box-sizing: border-box;padding: 5px;font-size: 12px;text-align: justify;color: #666666;margin:8px 1% 10px 1%;}
+    </style>
+  </head>
+  <body >
+     <div class="wrapper">
+        <div class="part">
+             <div class="title">Master Job Information</div>
+             <div class="title-info">
+                <div class="field-div">
+                  <div class="field-text">Company Name</div>
+                  <div class="field-value">
+                    <span *ngIf="masterNumberData !==undefined && masterNumberData.company !== undefined">{{masterNumberData.company}}</span>
+                  </div>
+                </div>
+                 <div class="field-div">
+                  <div class="field-text">Owner Name</div>
+                  <div class="field-value">
+                    <span *ngIf="masterNumberData !==undefined && masterNumberData.customerName !== undefined">{{masterNumberData.customerName}}</span>
+                  </div>
+                </div>
+                 <div class="field-div">
+                  <div class="field-text">Responsible Party</div>
+                  <div class="field-value">
+                    <span *ngIf="masterNumberData !==undefined && masterNumberData.responsibleParty !== undefined">{{masterNumberData.responsibleParty}}</span>
+                  </div>
+                </div>
+                 <div class="field-div">
+                  <div class="field-text">Email</div>
+                  <div class="field-value">
+                    <span *ngIf="masterNumberData !==undefined && masterNumberData.email !== undefined">{{masterNumberData.email}}</span>
+                  </div>
+                </div>
+                 <div class="field-div">
+                  <div class="field-text">Phone No.</div>
+                  <div class="field-value">
+                    <span *ngIf="masterNumberData !==undefined && masterNumberData.phoneNo !== undefined">{{masterNumberData.phoneNo}}</span>
+                  </div>
+                </div>
+                 <div class="field-div">
+                  <div class="field-text">Cell No.</div>
+                  <div class="field-value">
+                    <span *ngIf="masterNumberData !==undefined && masterNumberData.mobile !== undefined">{{masterNumberData.mobile}}</span>
+                  </div>
+                </div>
+                 <div class="field-div">
+                  <div class="field-text">Work No.</div>
+                  <div class="field-value">
+                     <span *ngIf="masterNumberData !==undefined && masterNumberData.workPhone !== undefined">{{masterNumberData.workPhone}}</span>
+                  </div>
+                </div>
+                 <div class="field-div">
+                  <div class="field-text">Loss Address</div>
+                  <div class="field-value">
+                       <span *ngIf="masterNumberData !==undefined && masterNumberData.lossAddress !== undefined"> {{masterNumberData.lossAddress}}</span>
+                                    <span *ngIf="masterNumberData !==undefined && masterNumberData.lossAddressCity !== undefined"> {{masterNumberData.lossAddressCity}}</span>
+                                    <span *ngIf="masterNumberData !==undefined && masterNumberData.lossAddressState !== undefined"> {{masterNumberData.lossAddressState}}</span>
+                                    <span *ngIf="masterNumberData !==undefined && masterNumberData.lossAddressZip !== undefined"> {{masterNumberData.lossAddressZip}}</span>
+                  </div>
+                </div>
+                 <div class="field-div">
+                  <div class="field-text">Billing Address</div>
+                  <div class="field-value">
+                        <span *ngIf="masterNumberData !==undefined && masterNumberData.billingAddress !== undefined"> {{masterNumberData.billingAddress}}</span>
+                                <span *ngIf="masterNumberData !==undefined && masterNumberData.billingAddressCity !== undefined"> {{masterNumberData.billingAddressCity}}</span> 
+                                <span *ngIf="masterNumberData !==undefined && masterNumberData.billingAddressState !== undefined"> {{masterNumberData.billingAddressState}}</span> 
+                                <span *ngIf="masterNumberData !==undefined && masterNumberData.billingAddressZip !== undefined"> {{masterNumberData.billingAddressZip}}</span>
+                  </div>
+                </div>
+                 <div class="field-div">
+                  <div class="field-text">Tenant Name</div>
+                  <div class="field-value">
+                      <span *ngIf="masterNumberData !==undefined && masterNumberData.tenantName !== undefined"> {{masterNumberData.tenantName}}</span>
+                  </div>
+                </div>
+                 <div class="field-div">
+                  <div class="field-text">Tenant Number</div>
+                  <div class="field-value">
+                        <span *ngIf="masterNumberData !==undefined && masterNumberData.tenantNumber !== undefined"> {{masterNumberData.tenantNumber}}</span>
+                  </div>
+                </div>
+                 <div class="field-div">
+                  <div class="field-text">Cause of Loss</div>
+                  <div class="field-value">
+                     <span *ngIf="masterNumberData !==undefined && masterNumberData.causeOfLoss !== undefined"> {{masterNumberData.causeOfLoss}}</span>
+                  </div>
+                </div>
+                 <div class="field-div">
+                  <div class="field-text">Program Type</div>
+                  <div class="field-value">
+                      <span *ngIf="masterNumberData !==undefined && masterNumberData.programType !== undefined"> {{masterNumberData.programType}}</span>
+                  </div>
+                </div>
+                 <div class="field-div">
+                  <div class="field-text">Year Built</div>
+                  <div class="field-value">
+                    <span *ngIf="masterNumberData !==undefined && masterNumberData.yearBuilt !== undefined"> {{masterNumberData.yearBuilt}}</span>
+                  </div>
+                </div>
+                 <div class="field-div">
+                  <div class="field-text">Property Type</div>
+                  <div class="field-value">
+                    <span *ngIf="masterNumberData !==undefined && masterNumberData.propertyType !== undefined"> {{masterNumberData.propertyType}}</span>
+                  </div>
+                </div>
+                 <div class="field-div">
+                  <div class="field-text">Description</div>
+                  <div class="field-value">
+                    <span *ngIf="masterNumberData !==undefined && masterNumberData.mastNumDesc !== undefined"> {{masterNumberData.mastNumDesc}}</span>
+                  </div>
+                </div>
+             </div><!-- End of Title Info -->
+        </div><!--- End of Part -->
+         <div class="part">
+             <div class="part2">
+                 <div class="title">Insurance Details</div>
+                 <div class="title-info">
+                    <div class="field-div">
+                      <div style="width: 100%;margin: 0px;">Self Pay</div>
+                      <div class="field-value">
+                        <span *ngIf="selfPay !==undefined && selfPay !== null"> {{selfPay}}</span>
+                      </div>
+                    </div>
+                    <div class="field-div">
+                      <div class="field-text">Claim No.</div>
+                      <div class="field-value">
+                        <span *ngIf="insurances !==undefined && insurances.claimNumber !== undefined"> {{insuraces.claimNumber}}</span>
+                      </div>
+                    </div>
+                     <div class="field-div">
+                      <div class="field-text">Policy No.</div>
+                      <div class="field-value">
+                        <span *ngIf="insurances !==undefined && insurances.policyNumber !== undefined"> {{insuraces.policyNumber}}</span>
+                      </div>
+                    </div>
+                     <div class="field-div">
+                      <div class="field-text">Insurance Company</div>
+                      <div class="field-value">
+                        <span *ngIf="insurances !==undefined && insurances.insuranceCompanyName !== undefined"> {{insuraces.insuranceCompanyName}}</span>
+                      </div>
+                    </div>
+                     <div class="field-div">
+                      <div class="field-text">Address</div>
+                      <div class="field-value">
+                        <span *ngIf="insurances !==undefined && insurances.address !== undefined"> {{insuraces.address}}</span>
+                      </div>
+                    </div>
+                 </div>
+             </div><!-- End of Part2 -->
+             <div style="width: 100%;float: left;padding: 0px;margin: 0px 0%;">
+                     <div class="title">Contact Details</div>
+                     <div class="title-info">
+                        <div class="field-div">
+                          <div class="field-text">Company Name</div>
+                          <div class="field-value">All State</div>
+                        </div>
+                        <div class="field-div">
+                          <div class="field-text">Name</div>
+                          <div class="field-value">James Wilson</div>
+                        </div>
+                        <div class="field-div">
+                          <div class="field-text">Role</div>
+                          <div class="field-value">Insurance Agent</div>
+                        </div>
+                         <div class="field-div">
+                          <div class="field-text">Email</div>
+                          <div class="field-value">James@gmail.com</div>
+                        </div>
+                        <div class="field-div">
+                          <div class="field-text">Phone No.</div>
+                          <div class="field-value">4587349875</div>
+                        </div>
+                     </div><!-- End of Title Info -->
+                     <div class="title-info">
+                        <div class="field-div">
+                          <div class="field-text">Company Name</div>
+                          <div class="field-value">JP Morgan</div>
+                        </div>
+                        <div class="field-div">
+                          <div class="field-text">Name</div>
+                          <div class="field-value">Olivia Boon</div>
+                        </div>
+                        <div class="field-div">
+                          <div class="field-text">Role</div>
+                          <div class="field-value">Sales Representative</div>
+                        </div>
+                         <div class="field-div">
+                          <div class="field-text">Email</div>
+                          <div class="field-value">Olivia@gmail.com</div>
+                        </div>
+                         <div class="field-div">
+                          <div class="field-text">Phone No.</div>
+                          <div class="field-value">4587349875</div>
+                        </div>
+                     </div><!-- End of Title Info -->
+                     <div class="title-info">
+                        <div class="field-div">
+                          <div class="field-text">Company Name</div>
+                          <div class="field-value">GM Pvt Ltd</div>
+                        </div>
+                         <div class="field-div">
+                          <div class="field-text">Name</div>
+                          <div class="field-value">Courtney Walsh</div>
+                        </div>
+                        <div class="field-div">
+                          <div class="field-text">Role</div>
+                          <div class="field-value">Adjuster</div>
+                        </div>
+                         <div class="field-div">
+                          <div class="field-text">Email</div>
+                          <div class="field-value">Courtney@gmail.com</div>
+                        </div>
+                         <div class="field-div">
+                          <div class="field-text">Phone No.</div>
+                          <div class="field-value">6676756765</div>
+                        </div>
+                     </div><!-- End of Title Info -->
+                     <div class="title-info">
+                        <div class="field-div">
+                          <div class="field-text">Company Name</div>
+                          <div class="field-value">Amego</div>
+                        </div>
+                        <div class="field-div">
+                          <div class="field-text">Name</div>
+                          <div class="field-value"> Jain</div>
+                        </div>
+                        <div class="field-div">
+                          <div class="field-text">Role</div>
+                          <div class="field-value">Sales Representative</div>
+                        </div>
+                         <div class="field-div">
+                          <div class="field-text">Email</div>
+                          <div class="field-value">Sarah@gmail.com</div>
+                        </div>
+                         <div class="field-div">
+                          <div class="field-text">Phone No.</div>
+                          <div class="field-value">4587349875</div>
+                        </div>
+                     </div><!-- End of Title Info -->
+             </div><!-- End of Part3 -->
+        </div><!--- End of Part -->
+         <div class="sign-div">
+             <div class="sign-thanks">Thanks & Regards,</div>
+             <div class="sign-name">Xcelerate Team.</div>
+         </div>
+         <div class="discalim">
+            "This email and any files transmitted with it are confidential and intended solely for the use of the individual or entity to whom they are addressed. If you have received this email in error please notify the system manager. This message contains confidential information and is intended only for the individual named. If you are not the named addressee you should not disseminate, distribute or copy this e-mail. Please notify the sender immediately by e-mail if you have received this e-mail by mistake and delete this e-mail from your system. If you are not the intended recipient you are notified that disclosing, copying, distributing or taking any action in reliance on the contents of this information is strictly prohibited."
+         </div>
+     </div><!-- End of Wrapper -->
+     
+  </body>
+</html>

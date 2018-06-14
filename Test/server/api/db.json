@@ -1,0 +1,18 @@
+{
+     "getDashboardMasterNumbersCount": 
+		{
+			"status": "success",
+			"message": "Success",
+			"dashboardCount": [
+			{
+			"name": "Approval Pending",
+			"value": 20
+			},
+			{
+			"name": "Initial Contact",
+			"value": 10
+			}
+		  ]
+		}
+
+}

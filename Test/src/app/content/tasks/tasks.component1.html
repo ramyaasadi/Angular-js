@@ -1,0 +1,408 @@
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 add-subjob"  style="float:left;margin-top:20px;">
+        <form #f="ngForm"  (submit)="saveData(f.value)" class="add-newsub">
+            <div class="row diff-row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-name padding0"><img src="./assets/images/personal.png">Personal</div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0">
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 part-info">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Customer Name</div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                        <input type="text" placeholder="Customer">
+                            <!--<p-autoComplete [(ngModel)]="selectedOwner" [suggestions]="filteredCustomerAddress" [size]="30" field="name"
+                                placeholder="Customer" [minLength]="1"  name="selectedOwner"></p-autoComplete>-->
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0">
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 part-info">
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">First Name</div>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                            <input type="text"/>
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 part-info">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Last Name</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <input type="text"/>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 part-info">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Email</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <input type="text"/>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 part-info">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Home Phone</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <input type="text"/>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 part-info">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Cell Number</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <input type="text"/>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 part-info">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Work Number</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <input type="text"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0">
+                 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 padding0" style="float:left">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 part-info">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Address1</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                            <textarea></textarea>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 part-info">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">City</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <input type="text"/>
+                            </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 part-info">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">State</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <input type="text"/>
+                            </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 part-info">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Zip</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <input type="text"/>
+                            </div>
+                    </div>
+                 </div><!-- End of Column 12 Div -->
+                 
+                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="float:left;padding:0px;">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 part-info" style="float:left;margin:2px 0px;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Loss Address <br>
+                            <span class="loss-check" style="font-size:10px;"><input type="checkbox" style="margin-left:0px;" [(ngModel)]="isLossAddressSame" name="LossAddressSame" (ngModelChange)="isLossAddressChanged()" [ngModel]="isLossAddressSame" ></span>
+                            <span class="loss-text">Same as Customer Address </span></div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <textarea></textarea>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 part-info" style="float:left;margin:3px 0px;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">City</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <input type="text"/>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 part-info" style="float:left;margin:3px 0px;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">State</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <input type="text"/>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-312 col-sm-3 col-xs-12 part-info" style="float:left;margin:3px 0px;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Zip</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <input type="text"/>
+                            </div>
+                        </div>
+                    </div><!-- End of Column 12 Div -->
+                    
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="float:left;padding:0px;">
+                            <div class="col-lg-3 col-md-312 col-sm-3 col-xs-12 part-info" style="float:left;margin:2px 0px;">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Billing Address <br/>
+                                    <span class="billing-check" style="font-size:10px;"><input type="checkbox" style="margin-left:0px;" [(ngModel)]="isBillingAddressSame" name="BillingAddressSame" (ngModelChange)="isBillingAddressChanged()" [ngModel]="isBillingAddressSame" ></span>
+                                    <span class="billing-text">Same as Customer Address </span></div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                    <textarea></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 part-info" style="float:left;margin:3px 0px;">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">City</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                    <input type="text"/>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-312 col-xs-12 part-info" style="float:left;margin:3px 0px;">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">State</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                    <input type="text"/>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 part-info" style="float:left;margin:3px 0px;">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Zip</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                    <input type="text"/>
+                                </div>
+                            </div>
+                    </div><!-- End of Column 12 Div -->
+                </div><!-- End of Column 8 Div -->
+                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 padding0" style="float:left">
+                        <div class="col-lg-6 col-md-6 col-sm-62 col-xs-12 part-info">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Tenant Name</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                    <input type="text"/>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 part-info">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Tenant Number</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                    <input type="text"/>
+                            </div>
+                        </div>
+                  </div><!-- End of Column 4 Div -->
+                </div><!-- End of Column 12 div -->
+            </div><!-- End of Row --> 
+            <div class="row diff-row" >
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12" style="float:left;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info" style="padding-left:0px;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Cause of Loss</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <select [(ngModel)]="causeOfLossId" name="causeOfLossId" style="width:95%;"> 
+                                    <option [value]="-1" required >[Select Cause of Loss]</option>
+                                            
+                                <option *ngFor="let causeOfLoss of causeOfLossIds"  [ngValue]="causeOfLoss.configId"
+                                        [selected]="causeOfLoss.configId == -1"> {{causeOfLoss.configValue}} </option>
+                                </select>    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12" style="float:left;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Program Type</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                            <select [(ngModel)]="programTypeId" name="programTypeId" > 
+                                <option value="" selected>[-- Select--] </option>
+                                <option *ngFor="let PType of programTypeIds" [ngValue]="PType.configId"> {{PType.configValue}} </option>
+                                </select>    
+        
+                            </div>
+                            </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12" style="float:left;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Year Built</div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                        <select [(ngModel)]="yearBuiltId" name="yearBuiltId" >
+                                            <option value="" [selected]="true">[-- Select--] </option> 
+                                        <option *ngFor="let yBuiltId of yearBuiltIds" [ngValue]="yBuiltId.configId"> {{yBuiltId.configValue}} </option>
+                                        </select>    
+                                    </div>
+                            </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12" style="float:left;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Description</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <textarea [(ngModel)]="description" name="description"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" style="float:left;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info" style="padding:0px;">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Property Type</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                    <span class="type-radio"><input type="radio" [(ngModel)]="propertyType"  value="Residential" name="propertyType"/>Residential</span>
+                                    <span class="type-radio"><input type="radio"[(ngModel)]="propertyType"  value="Commercial" name="propertyType"/>Commercial</span>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                    
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12" style="float:left;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info" style="padding:0px;">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Claim No.</div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                        <input [(ngModel)]="claimNumber" name="claimNumber" type="text"/>
+                                    </div>
+                            </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12" style="float:left;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info" style="padding:0px;">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Insurance Company</div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <select [(ngModel)]="companyId" name="companyId"  > 
+                                    <option *ngFor="let company of insuranceCompanies; let i = index" [ngValue]="i"> {{company.companyName}} </option>
+                                </select>
+                                    </div>
+                            </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12" style="float:left;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info" style="padding:0px;">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Estimator</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                    <input type="text"/>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12" style="float:left;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info" style="padding:0px;">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Co-Ordinator</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                    <input type="text"/>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12" style="float:left;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info" style="padding:0px;">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Supervisor</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                    <input type="text"/>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12" style="float:left;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info" style="padding:0px;">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Finance Person</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                    <input type="text"/>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div><!-- End of Row -->
+            <div class="row diff-row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left">
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 with-add" style="float:left;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  part-info" style="float:left;padding-left:0px;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Agent Name</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                            <select [(ngModel)]="agentId" name="adjusterId" (ngModelChange)="onAgentChange($event)"> 
+                                <option *ngFor="let adjuster of agents; let i = index" [ngValue]="i"> {{adjuster.firstName}} {{adjuster.lastName}} </option>
+                            </select>
+                            <img src="./assets/images/add.png">
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 part-info with-add" style="float:left;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Adjuster Name</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                            <select [(ngModel)]="adjusterId" name="adjusterId" (ngModelChange)="onAdjusterChange($event)"> 
+                                <option *ngFor="let adjuster of adjusters; let i = index" [ngValue]="i"> {{adjuster.firstName}} {{adjuster.lastName}} </option>
+                            </select>
+                                <img src="./assets/images/add.png">
+                        </div> 
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 part-info with-add" style="float:left;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">TPA</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <select>
+                                    <option>Select Name</option>
+                                    <option>David</option>
+                                </select>
+                                <img src="./assets/images/add.png">
+                            </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 part-info" style="float:left;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 with-add padding0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Property Manager Name</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                            <input type="text"/>
+                            <img src="./assets/images/add.png">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12" style="float:left;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Sales Representative</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                    <select>
+                                        <option>Select Name</option>
+                                        <option>Jhonson</option>
+                                    </select>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 part-info with-add" style="float:left;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Referred By</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                            <select>
+                                <option>Select Name</option>
+                                <option>Jhon</option>
+                            </select>
+                            <img src="./assets/images/add.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left">
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12" style="float:left">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info" style="padding:0px;float:left;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Agent Phone Number</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <input type="text" [(ngModel)]="agentPhoneNumber"  disabled name="agentPhoneNumber"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12" style="float:left">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info" style="padding:0px;float:left;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Adjuster Phone Number</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <input type="text" [(ngModel)]="adjusterPhoneNumber" disabled name="adjusterPhoneNumber"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12" style="float:left">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info" style="padding-left:0px;" >
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">TPA Number</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                    <input type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12" style="float:left">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info" style="padding-left:0px;" >
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Property Manager Number</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <input type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12" style="float:left">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info" style="padding-left:0px;" >
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Sales Representative Number</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <input type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12" style="float:left">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info" style="padding-left:0px;" >
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Reference Number</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <input type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- End of Row -->
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" style="float:left;padding-left:0px;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 diff-row padding0" style="float:left;">
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 save-email">
+                                    <input type="checkbox"/> &nbsp;Email
+                            </div>
+                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 email-recpnt">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 recpnt-text">Recipient</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 recpnt-value">
+                                    <select>
+                                        <option>Select Name</option>
+                                        <option>David</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12" style="float:left">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right action-btn" style="margin-top:20px;">
+                                <button class="sav-add" ><span><img src="./assets/images/save_job.png"></span>Save & Add Sub Job</button>
+                                <button class="sav" type="submit" ><span><img src="./assets/images/save.png"></span>Save</button>
+                                <button class="cancel" type="submit" ><span><img src="./assets/images/cancel.png"></span>Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- End of Row -->
+        </form>
+    </div>

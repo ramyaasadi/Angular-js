@@ -1,0 +1,301 @@
+<div class="row header-content" >
+    <div class="col-lg-6 col-md-pull-12 col-sm-pull-12 col-xs-pull-12" style="padding:0px;">
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;float:left;">
+          <div class="sidebar-header">
+              <a routerLink="/" routerLinkActiveOptions="{exact: true}" >
+              <img class="logo" src="../assets/images/web_2.png" width="100px;"></a>
+          </div>
+      </div>
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 header-main" style="float:left;">
+            {{message }}  
+      </div>
+    </div>
+  <div class="col-lg-6 col-md-pull-12 col-sm-pull-12 col-xs-pull-12" style="padding:0px;">
+       
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-5" style="float:left;">
+          <!-- <img src="./assets/images/location-icon.png" width="20px">
+          <select id="locname">
+            <option>Bengaluru</option>
+            <option>Hyderabad</option>
+            <option>Giddaluru</option>
+          </select> -->
+        </div>   
+        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 search-filter text-center">
+                <input type="search" placeholder="Search..."/><img src="./assets/images/search.png">
+        </div>
+        <!-- <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+          <back-button></back-button>
+        </div> -->
+      <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 user-info" style="float:left;">
+            <button (click)="goBack()" class="back" title="Previous Page"><i class="fa fa-arrow-circle-left"></i></button>
+          <!-- <previous-button></previous-button> -->
+           <!--<div class="btn-group" dropdown>
+              <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
+                <img src="./assets/images/user.png" width="35px"> <span class="caret"></span>
+              </button>
+              <ul *dropdownMenu class="dropdown-menu" role="menu">
+                <li role="menuitem"><a class="dropdown-item" href="#">Profile</a></li>
+                <li role="menuitem" (click)="confirmLogOut()"><a class="dropdown-item" href="#">Logout</a></li>
+              </ul>
+            </div>
+            <div class="btn-group" dropdown>
+                    <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
+                      Button dropdown <span class="caret"></span>
+                    </button>
+                    <ul *dropdownMenu class="dropdown-menu" role="menu">
+                      <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>
+                      <li role="menuitem"><a class="dropdown-item" href="#">Another action</a></li>
+                      <li role="menuitem"><a class="dropdown-item" href="#">Something else here</a></li>
+                      <li class="divider dropdown-divider"></li>
+                      <li role="menuitem"><a class="dropdown-item" href="#">Separated link</a>
+                      </li>
+                    </ul>
+                  </div>-->
+       </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-2 add-mster">
+                <div class="dropdown">
+                        <button class="dropbtn"><img src="./assets/images/user.png" width="30px"> Sarah Jain</button>
+                        <div class="dropdown-content">
+                          <a style="cursor:pointer;">Profile</a>
+                          <a style="cursor:pointer;" (click)="confirmLogOut()">Log out</a>
+                        </div>
+                </div>
+                <!-- <div class="dropdown" style="margin-top:8px;">
+                        <img src="./assets/images/user.png" width="30px"> Sarah Jain <a href="/" data-toggle="dropdown" class="dropdown-toggle"> <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/">Action</a></li>
+                            <li><a href="/">Another action</a></li>
+                        </ul>
+                </div> -->
+               <!-- <button type="button" class="btn btn-primary" (click)="confirmLogOut()">Logoff</button> -->
+        </div>
+  </div>
+</div>
+
+<ng-template #logoff>
+     <div class="modal-body text-center">
+    <p>Do you want to Log Off?</p>
+        <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
+        <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+  </div>
+
+</ng-template>
+
+<!--<ng-template #template>
+    <div class="modal-header add-master-header">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true"><img src="./assets/images/close.png"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+      
+        <form #f="ngForm"  >
+        <div class="row">
+           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-name padding0"><img src="./assets/images/personal.png">Personal</div>
+           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0">
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 part-info">
+                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Customer Name</div>
+                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value with-add">
+                <select [(ngModel)]="customerSequenceId" name="customerSequenceId" (ngModelChange)="onCustomerChange($event)" > 
+                   <option *ngFor="let customer of customersBasicInfo; let i = index" [ngValue]="i"> {{customer.lastName}},{{customer.firstName}} </option>
+                </select>
+                  <img src="./assets/images/add.png">
+                 </div>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 part-info">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Customer Email Id</div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                     <input type="text" [(ngModel)]="customerBasicInfo.email" disabled name="customerEmail"/>
+                  </div>
+               </div>
+               <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 part-info">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Property Type</div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                     <span><input type="radio" [(ngModel)]="propertyType"  value="Residential" name="propertyType"/>Residential</span>
+                     <span><input type="radio"[(ngModel)]="propertyType"  value="Commercial" name="propertyType"/>Commercial</span>
+                  </div>
+               </div>
+           </div>
+           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0">
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 part-info">
+                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name"><br/>Customer Address</div>
+                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value with-add">
+                    <textarea [(ngModel)]="customerBasicInfo.address1" name="CustomerAddress"></textarea>
+                 </div>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 part-info">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Loss Address <br><span>Same as Customer Address </span>
+                  <span><input type="checkbox" [(ngModel)]="isLossAddressSame" name="LossAddressSame" (ngModelChange)="isLossAddressChanged()" [ngModel]="isLossAddressSame" ></span></div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                      <textarea [(ngModel)]="lossAddress" [disabled]="isLossAddressSame" name="LossAddress"></textarea>
+                  </div>
+               </div>
+               <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 part-info">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Billing Address <br><span>Same as Billing Address </span>
+                  <span><input type="checkbox" [(ngModel)]="isBillingAddressSame" name="BillingAddressSame" (ngModelChange)="isBillingAddressChanged()" [ngModel]="isBillingAddressSame" ></span></div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                      <textarea [(ngModel)]="billingAddress" [disabled]="isBillingAddressSame" name="BillingAddress"></textarea>
+                  </div>
+               </div>
+           </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-name padding0"><img src="./assets/images/contact_job-ic.png">Contact</div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0">
+               <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 part-info">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Home Phone</div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                      <input type="text" [(ngModel)]="customerBasicInfo.phone1" disabled name="HomeNumber" />
+                  </div>
+               </div>
+               <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 part-info">
+                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Cell Number</div>
+                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                      <input type="text" [(ngModel)]="customerBasicInfo.mobile" disabled name="MobileNumber"/>
+                   </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 part-info">
+                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Work Number</div>
+                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                      <input type="text" [(ngModel)]="customerBasicInfo.WorkNumber" disabled name="WorkNumber"/>
+                   </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0">
+               <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 part-info">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Tenant Name</div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value with-add">
+                      <input type="text"/>
+                  </div>
+               </div>
+               <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 part-info">
+                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Tenant Number</div>
+                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                      <input type="text"/>
+                   </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 part-info">
+                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Project Manager</div>
+                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value with-add">
+                     <select [(ngModel)]="projectManagerId" name="projectManagerId" > 
+                        <option *ngFor="let projManager of projectManagers" [ngValue]="projManager.userId"> {{projManager.firstName}}{{projManager.lastName}} </option>
+                      </select>    
+                      <img src="./assets/images/add.png">
+                   </div>
+                </div>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 padding0">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-name padding0"><img src="./assets/images/claim.png">Claim Insurance</div>
+               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Claim No.</div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                      <input [(ngModel)]="claimNumber" name="claimNumber" type="text"/>
+                  </div>
+               </div>
+               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info">
+                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Insurance Company</div>
+                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value with-add">
+                    <select [(ngModel)]="companyId" name="companyId" (ngModelChange)="onCompanyChange($event)" > 
+                        <option *ngFor="let company of insuranceCompanies; let i = index" [ngValue]="i"> {{company.companyName}} </option>
+                    </select>
+                      <img src="./assets/images/add.png">
+                   </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 padding0">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-name padding0"><img src="./assets/images/adjuster.png">Adjuster</div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Adjuster Name</div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value with-add">
+                     <select [(ngModel)]="adjusterId" name="adjusterId" (ngModelChange)="onAdjusterChange($event)"> 
+                        <option *ngFor="let adjuster of adjusterIds; let i = index" [ngValue]="i"> {{adjuster.firstName}} {{adjuster.lastName}} </option>
+                    </select>
+                         <img src="./assets/images/add.png">
+                     </div> 
+                 </div>
+                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info">
+                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Adjuster Phone Number</div>
+                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                     <input type="text" [(ngModel)]="adjusterPhoneNumber" disabled name="adjusterPhoneNumber"/>
+                     </div>
+                  </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 padding0">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-name padding0"><img src="./assets/images/agent.png">Agent</div>
+               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Agent Name</div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value with-add">
+                      <select>
+                        <option>Select Name</option>
+                        <option>Naveen Kumar</option>
+                      </select>
+                      <img src="./assets/images/add.png">
+                   </div>
+               </div>
+               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info">
+                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Agent Phone Number</div>
+                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                      <input type="text"/>
+                   </div>
+                </div>
+            </div>
+         </div>
+         <div class="row last">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 padding0">
+               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Referred By</div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value with-add">
+                      <select>
+                        <option>Select Name</option>
+                        <option>Naveen Kumar</option>
+                      </select>
+                      <img src="./assets/images/add.png">
+                   </div>
+               </div>
+               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info">
+                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Year Built</div>
+                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                     <select [(ngModel)]="yearBuiltId" name="yearBuiltId" > 
+                        <option *ngFor="let yBuiltId of yearBuiltIds" [ngValue]="yBuiltId.configId"> {{yBuiltId.configValue}} </option>
+                      </select>    
+                   </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 padding0">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Cause of Loss</div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value with-add">
+                      <select [(ngModel)]="causeOfLossId" name="causeOfLossId" > 
+                        <option *ngFor="let causeOfLoss of causeOfLossIds"  [ngValue]="causeOfLoss.configId"> {{causeOfLoss.configValue}} </option>
+                      </select>    
+                     </div>
+                 </div>
+                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info">
+                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Program Type</div>
+                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value with-add">
+                     <select [(ngModel)]="programTypeId" name="programTypeId" > 
+                        <option *ngFor="let PType of programTypeIds" [ngValue]="PType.configId"> {{PType.configValue}} </option>
+                      </select>    
+
+                     </div>
+                  </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 padding0">
+               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Description</div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                      <textarea [(ngModel)]="description" name="description" style="height:70px;"></textarea>
+                   </div>
+               </div>
+            </div>
+         </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right action-btn">
+           <button class="sav-add" ><span><img src="./assets/images/save_job.png"></span>Save & Add Sub Job</button>
+           <button class="sav" (click)="saveData()" ><span><img src="./assets/images/save.png"></span>Save</button>
+       </div>
+       </form>
+      </div>
+</ng-template>-->

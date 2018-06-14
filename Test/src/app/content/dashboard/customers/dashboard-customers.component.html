@@ -1,0 +1,15 @@
+<div class="customer">
+  <div class="customer-left">
+      <span><img src="../assets/images/customer-icon.png"></span>
+      <span>{{this.overAllCount}}</span>
+    <div class="title-name">Customers</div>  
+  </div>
+  <div class="customer-right">
+    <div class="right-top" *ngFor="let dashct of dashCst">
+      <span>{{dashct.name}}</span><span style="font-weight: 600;font-size: 19px;">{{dashct.value}}</span>  
+    </div>
+    <!-- <div class="right-bottom">
+       <span>Till Last Month Count</span><span style="font-weight: 600;font-size: 19px;"></span>  
+    </div> -->
+  </div>
+</div>

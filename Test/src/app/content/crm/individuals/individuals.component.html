@@ -1,0 +1,175 @@
+<div class="row crm1">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right"><img src="./assets/images/add.png" (click)="showDialog()" style="cursor:pointer;"/></div>
+        <p-table [columns]="cols" [value]="individuals" [paginator]="true" [rows]="10" >
+            <ng-template pTemplate="header" let-columns>
+                    <tr>
+                        <th *ngFor="let col of columns" [pSortableColumn]="col.field" [class]="!col.showData ? 'ui-table-hide-on-sm' : ''" >
+                            {{col.header}}
+                            <p-sortIcon [field]="col.field"></p-sortIcon>
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-individual >
+                        <tr>
+                                <td><span style="text-decoration:underline;cursor:pointer;color:#b30059;font-weight:500;" (click)="show=!show">{{ individual.name }}</span></td>
+                                <td style="text-align:center;">{{individual.jobreferred}}</td>
+                                <!-- <td style="text-align:center;">
+                                    <a routerLink="/Content/SubJobs/SubJobsDetails/353867">
+                                      <img [src]="task.jobImage" title="{{task.jobType}}">
+                                    </a>
+                                </td> -->
+                                <td>{{individual.amountbids }}</td>
+                                <td>{{individual.amountsales}}</td>
+                                <td>{{individual.invested}}</td>
+                                <td>{{individual.spent}}</td>
+                                <td>{{individual.classification}}</td>
+                                <td>{{individual.salesrep}}</td>
+                        </tr>
+                    </ng-template>
+        </p-table>
+</div>
+
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 indi-masterJob padding0" style="float:left;" *ngIf="show">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="color:#333;font-size:16px;">Name : <b>Kayla Weber</b></div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="color:#333;font-size:16px;">Company Name : <b>Sawwares</b></div>
+    <table>
+       <thead>
+            <tr>
+                <th>Status</th>
+                <th>Master Job Number</th>
+                <th>Estimates</th>
+            </tr>
+       </thead>
+       <tbody>
+            <tr>
+                <td><span class="new">New</span></td>
+                <td>M_Bates_150</td>
+                <td>$3455</td>
+            </tr>
+            <tr>
+                <td><span class="pending">Pending</span></td>
+                <td>M_Mckinney_152</td>
+                <td>$6798</td>
+            </tr>
+            <tr>
+                <td><span class="new">New</span></td>
+                <td>M_Chandler_155</td>
+                <td>$6895</td>
+            </tr>
+            <tr>
+                <td><span class="pending">Pending</span></td>
+                <td>M_Owen_158</td>
+                <td>$8668</td>
+            </tr>
+            <tr>
+                <td><span class="new">New</span></td>
+                <td>M_Johnston_160</td>
+                <td>$6568</td>
+            </tr>
+       </tbody>
+    </table>
+</div>
+
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 new-one" style="float:left;">
+        <p-dialog header="Add Individual" [(visible)]="display" modal="modal" [responsive]="true" [width]="550">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 padding0" style="float:left;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Name</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <input type="text" style="width:100%"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 padding0" style="float:left;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">invested</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <input type="text" style="width:100%"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 padding0" style="float:left;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Amount of Bids</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <input type="text" style="width:100%"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 padding0" style="float:left;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Amount of Sales</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                    <input type="text" style="width:100%"/>
+                                </div>
+                            </div>
+                    </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 padding0" style="float:left;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Spent</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <input type="text" style="width:100%"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 padding0" style="float:left;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Classification</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <input type="text" style="width:100%"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 padding0" style="float:left;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Company Name</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <input type="text" style="width:100%"/>
+                            </div>
+                        </div>
+                    </div>
+                    
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;"> 
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 padding0" style="float:left;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">No.of Jobs Reffered</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                    <input type="text" style="width:100%"/>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 padding0" style="float:left;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Sales Representative</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                    <select style="width:100%;">
+                                        <option>Alan Page</option>
+                                        <option>Jennie Hart</option>
+                                        <option>Josh Cunningham</option>
+                                        <option>Jacob Francis</option>
+                                    </select>
+                                </div>
+                            </div>
+                    </div>
+                    <!-- <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 padding0" style="float:left;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Email</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                    <input type="text" style="width:100%"/>
+                                </div>
+                            </div>
+                    </div> -->
+            </div>
+            <p-footer style="float:right;">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:5px 6px;">
+                    <button type="button"  (click)="display=false" style="background:#333;color:#FFF;padding:3px 10px;cursor:pointer;border:none;"><i class="fa fa-check"></i>&nbsp;Create</button>
+                    <button type="button" (click)="display=false" style="background:#333;color:#FFF;padding:3px 10px;cursor:pointer;border:none;"><i class="fa fa-times"></i>&nbsp;Cancel</button>
+                </div>
+            </p-footer>
+        </p-dialog>
+</div>

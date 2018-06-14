@@ -1,0 +1,139 @@
+<div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-row" style="float:left;margin-top:5px;">
+                <span style="position:absolute;top:2px;right:2px;cursor:pointer;z-index:10;" (click)="showDialog()"><img src="../assets/images/edit_icon.png"></span>
+                <div class="row">
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 padding0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Company Name</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">Moonlightings</div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 padding0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Owner Name</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">
+                                <span *ngIf="masterNumberData !==undefined && masterNumberData.customerName != undefined"> {{masterNumberData.firstName}}{{masterNumberData.lastName}} </span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 padding0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Resposible Party</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">Supervisor</div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 padding0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Email</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">
+                                <span *ngIf="masterNumberData !==undefined && masterNumberData.email !== undefined"> {{masterNumberData.email}}</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 padding0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Phone No.</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">
+                                <span *ngIf="masterNumberData !==undefined && masterNumberData.phoneNo !== undefined"> {{masterNumberData.phoneNo}}</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 padding0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Cell No.</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">
+                                <span *ngIf="masterNumberData !==undefined && masterNumberData.mobile !== undefined"> {{masterNumberData.mobile}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 padding0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Work No.</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">
+                                <span *ngIf="masterNumberData !==undefined && masterNumberData.workPhoneNo !== undefined"> {{masterNumberData.workPhoneNo}}</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 padding0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Address</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">
+                                <span *ngIf="masterNumberData !==undefined && masterNumberData.address !== undefined"> {{masterNumberData.address}}</span>
+                                <span *ngIf="masterNumberData !==undefined && masterNumberData.city !== undefined"> {{masterNumberData.city}}</span>
+                                <span *ngIf="masterNumberData !==undefined && masterNumberData.state !== undefined"> {{masterNumberData.state}}</span>
+                                <span *ngIf="masterNumberData !==undefined && masterNumberData.zip !== undefined"> {{masterNumberData.zip}}</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 padding0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Loss Address</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">
+                                    <span *ngIf="masterNumberData !==undefined && masterNumberData.lossAddress !== undefined"> {{masterNumberData.lossAddress}}</span>
+                                    <span *ngIf="masterNumberData !==undefined && masterNumberData.lossAddressCity !== undefined"> {{masterNumberData.lossAddressCity}}</span>
+                                    <span *ngIf="masterNumberData !==undefined && masterNumberData.lossAddressState !== undefined"> {{masterNumberData.lossAddressState}}</span>
+                                    <span *ngIf="masterNumberData !==undefined && masterNumberData.lossAddressZip !== undefined"> {{masterNumberData.lossAddressZip}}</span>
+                            </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 padding0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Billing Address</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">
+                                <span *ngIf="masterNumberData !==undefined && masterNumberData.billingAddress !== undefined"> {{masterNumberData.billingAddress}}</span>
+                                <span *ngIf="masterNumberData !==undefined && masterNumberData.billingAddressCity !== undefined"> {{masterNumberData.billingAddressCity}}</span> 
+                                <span *ngIf="masterNumberData !==undefined && masterNumberData.billingAddressState !== undefined"> {{masterNumberData.billingAddressState}}</span> 
+                                <span *ngIf="masterNumberData !==undefined && masterNumberData.billingAddressZip !== undefined"> {{masterNumberData.billingAddressZip}}</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 padding0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Tenant Name</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">
+                                <span *ngIf="masterNumberData !==undefined && masterNumberData.tenantName !== undefined"> {{masterNumberData.tenantName}}</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 padding0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Tenant Number</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">
+                                <span *ngIf="masterNumberData !==undefined && masterNumberData.tenantNumber !== undefined"> {{masterNumberData.tenantNumber}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-row" style="float:left;margin-top:5px;">
+                <div class="row">
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 padding0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Cause of Loss</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">
+                                <span *ngIf="masterNumberData !==undefined && masterNumberData.causeOfLoss !== undefined"> {{masterNumberData.causeOfLoss}}</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 padding0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Program Type</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">
+                                <span *ngIf="masterNumberData !==undefined && masterNumberData.programType !== undefined"> {{masterNumberData.programType}}</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 padding0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Year Built</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">
+                                <span *ngIf="masterNumberData !==undefined && masterNumberData.yearBuilt !== undefined"> {{masterNumberData.yearBuilt}}</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 padding0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Description</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">
+                                <span *ngIf="masterNumberData !==undefined && masterNumberData.description !== undefined"> {{masterNumberData.description}}</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 padding0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Property Type</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">
+                                <span *ngIf="masterNumberData !==undefined && masterNumberData.propertyType !== undefined"> {{masterNumberData.propertyType}}</span>
+                        </div>
+                    </div>
+                    <!-- <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 padding0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Sub Jobs</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">10</div>
+                    </div> -->
+                </div>
+            </div>
+                
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-row" style="float:left;margin-top:5px;">
+                        <common-insurance></common-insurance>
+            </div>
+</div>
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 master-new-one" style="float:left;">
+        <p-dialog header="Edit" [(visible)]="display" modal="modal" width="1024" [responsive]="true">
+                <masternumber-popup></masternumber-popup>
+            <p-footer>
+                <button type="button" pButton icon="fa-arrow-up" (click)="display=false" label="Update"></button>
+                <button type="button" pButton icon="fa-close" (click)="display=false" label="Cancel"></button>
+            </p-footer>
+        </p-dialog>
+    </div>

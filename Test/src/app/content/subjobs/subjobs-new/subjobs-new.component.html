@@ -1,0 +1,244 @@
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 add-subjob"  style="float:left;">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-left" style="float:left;">
+                <span style="color:#0033cc;font-size:25px;">New File</span>
+         </div>
+    <form #f="ngForm"  (submit)="saveData(f.value);" class="add-newsub">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="float:left;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 diff-row" style="float:left;">
+                           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-name padding0"><img src="./assets/images/personal.png">Select File Types</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0 new-sub-img">
+                                    <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Select Sub Job Type</div> -->
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value text-center" style="margin-top:5px;">
+                                        <span *ngFor="let item of imagearray;let i=index">
+                                            <span *ngIf="item.imageActive">
+                                                <img src="{{item.jobActiveImage}}" title="{{item.jobName}}" style="cursor:pointer" (click)="onImgClick(i)"/>
+                                            </span>
+                                            <span *ngIf = "item.imageActive==false">
+                                                    <img src="{{item.jobInactiveImage}}" title="{{item.jobName}}" style="cursor:pointer" (click)="onImgClick(i)"/>
+                                            </span>
+                                                <!-- <img src= "{{item.imageActive}}?"{{item.jobActiveimage}}:{{item.jobInactiveImage}} title="{{item.jobInactiveImage}}" style="cursor:pointer" (click)="onImgClick(i)"/> -->
+                                               <!-- <span [(ngmodel)]="item.jobActiveImage"></span> -->
+                                               
+                                        </span>
+                                        <span class="selected-name">{{displayImageName}}</span>
+                                        <div *ngIf="displayImageName==undefined || displayImageName==''" [hidden]="displayImageName.valid || !f.submitted" style="color:rgb(202, 10, 10);font-weight:600;letter-spacing:0.7px;">
+                                            File Type is required.	
+                                        </div>
+                                            <!-- <img src="../assets/images/Water_.png" title="Water" style="cursor:pointer" id="picture" (click)="onImgClick()"/>
+                                            <img src="../assets/images/Reconstruction_.png" title="Recon" style="cursor:pointer" disabled="otherimagedsbl"/>
+                                            <img src="../assets/images/Content_.png" title="Content" style="cursor:pointer" disabled="otherimagedsbl"/>
+                                            <img src="../assets/images/Mold_.png" title="Mold" style="cursor:pointer" disabled="otherimagedsbl"/>
+                                            <img src="../assets/images/Asbestos_.png" title="Asbestos" style="cursor:pointer" disabled="otherimagedsbl"/>
+                                            <img src="../assets/images/Board_.png" title="Board Up" style="cursor:pointer" disabled="otherimagedsbl"/>
+                                            <img src="../assets/images/Consulting_.png" title="Consulting" style="cursor:pointer" disabled="otherimagedsbl"/>
+                                            <img src="../assets/images/Bio_.png" title="Bio" style="cursor:pointer" disabled="otherimagedsbl"/> -->
+                                    </div>
+                            </div>
+                        </div>
+                        
+                        
+                </div><!-- End of Row -->
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="float:left;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 diff-row" style="float:left;">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-name padding0"><img src="./assets/images/personal.png">Roles</div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  with-add part-info padding0">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Supervisor</div>
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                               <!-- <select>
+                                                    <option>Select</option>
+                                                    <option>Shannon</option>
+                                                    <option>Castro</option>
+                                                    <option>Wong</option>
+                                                    <option>Dennis</option>
+                                                </select>-->
+                                                <p-autoComplete 
+                                                [(ngModel)]="supervisor" 
+                                                [suggestions]="filteredSupervisors" 
+                                                (completeMethod)="filterSupervisor($event)" 
+                                                field="fullName"
+                                                [size]="30"
+                                                [forceSelection]="true"
+                                                [dropdown]="true"
+                                                placeholder="Supervisor" 
+                                                name="supervisor">
+                                                </p-autoComplete>
+                                                <span (click)="showDialog('Supervisor')"><img src="./assets/images/add.png"></span>
+                                                    <!-- <p-autoComplete [(ngModel)]="selectedOwner" [suggestions]="filteredCustomerAddress" [size]="30" field="name"
+                                                        placeholder="Role" [minLength]="1"  name="selectedOwner"></p-autoComplete> -->
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  with-add part-info padding0">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Estimator</div>
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                                    <!--<select>
+                                                        <option>Select</option>
+                                                        <option>Rachael</option>
+                                                        <option>Claudia</option>
+                                                        <option>Carol</option>
+                                                        <option>Timothy</option>
+                                                    </select>-->
+                                                <p-autoComplete 
+                                                [(ngModel)]="estimator" 
+                                                [suggestions]="filteredEstimators" 
+                                                (completeMethod)="filterEstimator($event)" 
+                                                field="fullName"
+                                                [size]="30"
+                                                [forceSelection]="true"
+                                                [dropdown]="true"
+                                                placeholder="Estimator" 
+                                                name="estimator">
+                                                </p-autoComplete>
+                                                <span (click)="showDialog('Estimator')"><img src="./assets/images/add.png"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  with-add part-info padding0">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Co-Ordinator</div>
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                                    <!--<select>
+                                                        <option>Select</option>
+                                                        <option>Walker</option>
+                                                        <option>Castro</option>
+                                                        <option>Farmer</option>
+                                                        <option>Logan</option>
+                                                    </select>-->
+                                                <p-autoComplete 
+                                                [(ngModel)]="coordinator" 
+                                                [suggestions]="filteredCoordinators" 
+                                                (completeMethod)="filterCoordinator($event)" 
+                                                field="fullName"
+                                                [size]="30"
+                                                [forceSelection]="true"
+                                                [dropdown]="true"
+                                                placeholder="Co-Ordinator" 
+                                                name="coordinator">
+                                                </p-autoComplete>
+                                                <span (click)="showDialog('Coordinator')"><img src="./assets/images/add.png"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  with-add part-info padding0">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Finance</div>
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                                    <!--<select>
+                                                        <option>Select</option>
+                                                        <option>Louise</option>
+                                                        <option>Rosemary</option>
+                                                        <option>April</option>
+                                                        <option>Leah</option>
+                                                    </select>-->
+                                                <p-autoComplete 
+                                                [(ngModel)]="finance" 
+                                                [suggestions]="filteredFinance" 
+                                                (completeMethod)="filterFinance($event)" 
+                                                field="fullName"
+                                                [size]="30"
+                                                [forceSelection]="true"
+                                                [dropdown]="true"
+                                                placeholder="Finance" 
+                                                name="finance">
+                                                </p-autoComplete>
+                                                <span (click)="showDialog('Finance')"><img src="./assets/images/add.png"></span>
+                                            </div>
+                                        </div>
+        
+                            </div><!-- End of Diff Row -->
+                 </div>
+                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="float:left;">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 diff-row" style="float:left;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-name padding0"><img src="./assets/images/personal.png">Description</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value" style="margin:5px 0px 0px 0px;">
+                                <textarea [(ngModel)]="description" name="description" style="width:100%;height:80px;"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- End of Column Width 12 Div -->
+        </div><!-- End of Row --> 
+        <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right action-btn" style="margin-top:20px;">
+                                <button class="sav" type="submit" ><span><img src="./assets/images/save.png"></span>Save File</button>
+                                <button class="cancel" type="reset" (click)="f.reset();f.submitted=false;cancel();"><span><img src="./assets/images/cancel.png"></span>Cancel</button>
+                        </div>
+                </div>
+        </div><!-- End of Row -->
+    </form>
+</div>
+
+<div class="content-section implementation">
+    <p-growl [(value)]="msgs"></p-growl>
+</div>
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 new-one" style="float:left;">
+    <p-dialog header="Add New {{this.contactDetails.contactType}}" [(visible)]="display" modal="modal" [responsive]="true" [width]="350">
+        <form #newContact="ngForm" (submit)="saveContactData(newContact);" method="POST">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 part-info padding0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">First Name</div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                            <input type="text" [ngModel]="contactDetails?.firstName" name="contactDetails.firstName" class="form-control"
+                                        (ngModelChange)="contactDetails.firstName = $event" required #conFirstName="ngModel"/>
+                            <div [hidden]="conFirstName.valid || (conFirstName.pristine && !newContact.submitted)" style="color:rgb(202, 10, 10);font-weight:600;letter-spacing:0.7px;">
+                                    First Name is required.	
+                            </div> 
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 part-info padding0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Last Name</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <input type="text" [ngModel]="contactDetails?.lastName" name="contactDetails.lastName" 
+                                        (ngModelChange)="contactDetails.lastName = $event" required #conLastName="ngModel"/>
+                                <div [hidden]="conLastName.valid || (conLastName.pristine && !newContact.submitted)" style="color:rgb(202, 10, 10);font-weight:600;letter-spacing:0.7px;">
+                                        Last Name is required.	
+                                </div>
+                        </div>
+                </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 part-info padding0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Email</div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                            <input type="text" [ngModel]="contactDetails?.email" name="contactDetails.email"
+                                (ngModelChange)="contactDetails.email = $event" [pattern]="emailPattern"
+                                    (ngModelChange)="email=$event"   
+                                    #contactEmail="ngModel"> 
+                            <div *ngIf="contactEmail.errors"> 
+                                <div *ngIf="contactEmail.errors.pattern" style="color:rgb(202, 10, 10);font-weight:600;letter-spacing:0.5px;"> 
+                                    Email is invalid
+                                </div>	
+                            </div> 
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 part-info padding0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Phone Number</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <p-inputMask mask="(999) 999-9999" type="text" [ngModel]="contactDetails?.phoneNo" name="contactDetails.phoneNo"
+                                (ngModelChange)="contactDetails.phoneNo = $event" placeholder="(999) 999-9999"></p-inputMask>
+                        </div>
+                </div>
+        </div>
+        <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 part-info padding0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Role</div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                        <select>
+                            <option>Select</option>
+                            <option>Supervisor</option>
+                            <option>Estimator</option>
+                            <option>Co-Ordinator</option>
+                            <option>Finance</option>
+                        </select>
+                    </div>
+                </div>
+        </div> -->
+        <p-footer>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;margin:8px 0px;text-align:right">
+                <button type="submit"  style="background:#333;color:#FFF;padding:3px 10px;cursor:pointer;border:none;"><i class="fa fa-check"></i>&nbsp;Create</button>
+                <button type="button" (click)="display=false;newContact.submitted=false;" style="background:#333;color:#FFF;padding:3px 10px;cursor:pointer;border:none;"><i class="fa fa-times"></i>&nbsp;Cancel</button>
+            </div>
+        </p-footer>
+        </form>
+    </p-dialog>
+</div>

@@ -1,0 +1,6 @@
+export class TokenValue{
+
+   getToken():string{
+      return 'eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE1MTkzNzQ3OTMsImxhc3ROYW1lIjoiQ2hlbm51cGF0aSIsImVtYWlsIjoicmFtYWRldmkuY2hlbm51cGF0aUB3aXNzZW5pbmZvdGVjaC5jb20iLCJ1c2VySWQiOjEsImNvbXBhbnkiOjEsInByb2ZpbGVQaWMiOm51bGwsImZpcnN0TmFtZSI6IlJhbWFkZXZpIiwiaWF0IjoxNTE4NzY5OTkzLCJtb2JpbGUiOiI5NjExMTIyNzgyIn0.jGuoZ-KBbvZU0lT78l53mk1Yhk1r9HLsPDP_mFSZki5nQSnZSgSQBJgFMWImW7vEn9HuYTACxOdSHR1EiMIzpQ';
+   }
+}

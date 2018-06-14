@@ -1,0 +1,18 @@
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 subjobs-info">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 subjobs-tabs padding0">
+               <ul>
+                  <li>  <a [routerLink]="['/Content/Tasks', 'task']" routerLinkActive="router-link-active" #myTasks="routerLinkActive"> 
+                          <img [src]="myTasks.isActive?'../assets/images/my_m_.png':'../assets/images/my_m.png'">&nbsp;My Tasks</a> 
+                  </li>
+                  <li>  <a [routerLink]="['/Content/Tasks', 'myjobtask']" routerLinkActive="router-link-active" #myJobTasks="routerLinkActive"> 
+                          <img [src]="myJobTasks.isActive?'../assets/images/all_m_.png':'../assets/images/all_m.png'">&nbsp;All Tasks</a> 
+                  </li>
+               </ul>
+           </div>
+           <div *ngIf="myTasks.isActive">
+                <task-grid></task-grid>
+           </div>
+           <div *ngIf="myJobTasks.isActive">
+              <task-grid-all></task-grid-all>
+           </div>
+      </div>

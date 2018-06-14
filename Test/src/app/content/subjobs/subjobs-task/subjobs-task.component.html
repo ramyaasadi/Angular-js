@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 subtask padding0">
+        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+            <thead>
+                <tr>
+                <th>Status</th>
+                <th>Task</th>
+                <th>Owner</th>
+                <th>Due Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let subtask of subtasks">
+                <td><span class="{{subtask.status}}"> {{ subtask.status }} </span></td>
+                <td>{{ subtask.title }}</td>
+                <td>{{subtask.ownerName}}</td>
+                <!-- <td><img [src]="subtask.jobImage" title="{{subtask.jobType}}" /></td> -->
+                <td>{{ subtask.duedate}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

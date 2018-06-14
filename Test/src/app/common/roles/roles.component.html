@@ -1,0 +1,110 @@
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+    <!--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 job-head padding0">
+     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 job-headLeft" style="padding-left:0px;"> 
+          Roles
+       </div>
+     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 job-headRight text-right">
+         <span (click)="showDialog()"><img src="../assets/images/edit_icon.png"></span>
+       </div>
+   </div> -->
+   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 job-fullinfo" style="overflow-x:hidden;overflow-y:auto;height:auto;background:transparent;border:none;">
+        <div *ngFor="let role of roles" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;margin:5px 0px;border-bottom:1px solid #CCC;box-sizing:border-box;">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 padding0" style="float:left">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Name</div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">{{role.firstName}}&nbsp;{{role.lastName}}</div>
+                </div>
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 padding0" style="float:left">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Role</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">{{role.role}}</div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 padding0" style="float:left">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Email</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">{{role.email}}</div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 padding0" style="float:left">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Phone Number</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">{{role.phoneNo}}</div>
+                </div>
+        </div>
+        <div *ngIf="roles==false" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;margin:5px 0px;border-bottom:1px solid #CCC;box-sizing:border-box;">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 padding0" style="float:left">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Name</div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">&nbsp;</div>
+                </div>
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 padding0" style="float:left">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Role</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">&nbsp;</div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 padding0" style="float:left">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Email</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">&nbsp;</div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 padding0" style="float:left">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Phone Number</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">&nbsp;</div>
+                </div>
+        </div>
+        <!-- <span *ngIf="roles==false" style="display:block;text-align:center;margin-top:20px;color:#4d4d4d;font-size:20px;opacity:0.6;">Roles are not Available.</span> -->
+   </div>
+</div>
+
+<!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 new-one" style="float:left;">
+    <p-dialog header="Edit" [(visible)]="display" modal="modal" width="350" [responsive]="true">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 part-info padding0">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Supervisor</div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                   <select>
+                       <option>Select</option>
+                       <option>Shannon</option>
+                       <option>Castro</option>
+                       <option>Wong</option>
+                       <option>Dennis</option>
+                   </select>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 part-info padding0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Estimator</div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                            <select>
+                                <option>Select</option>
+                                <option>Rachael</option>
+                                <option>Claudia</option>
+                                <option>Carol</option>
+                                <option>Timothy</option>
+                            </select>
+                    </div>
+            </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 part-info padding0">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Co-Ordinator</div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                        <select>
+                            <option>Select</option>
+                            <option>Walker</option>
+                            <option>Castro</option>
+                            <option>Farmer</option>
+                            <option>Logan</option>
+                        </select>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 part-info padding0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Finance</div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                        <select>
+                            <option>Select</option>
+                            <option>Louise</option>
+                            <option>Rosemary</option>
+                            <option>April</option>
+                            <option>Leah</option>
+                        </select>
+                    </div>
+            </div>
+        </div>
+        <p-footer>
+            <button type="button"  (click)="display=false" style="background:#333;color:#FFF;padding:3px 10px;cursor:pointer;border:none;"><i class="fa fa-arrow-up"></i>&nbsp;Update</button>
+            <button type="button" (click)="display=false" style="background:#333;color:#FFF;padding:3px 10px;cursor:pointer;border:none;"><i class="fa fa-times"></i>&nbsp;Cancel</button>
+        </p-footer>
+    </p-dialog>
+</div> -->

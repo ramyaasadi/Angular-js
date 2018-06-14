@@ -1,0 +1,25 @@
+
+<div class="masterNumber" >
+  <div class="master-left" [style.background-color]=this.barBackgroundColor>
+      <span><img src={{imageSource}}></span>
+      <span>{{totalValue}}</span>
+     <div class="title-name">{{graphName}}</div>
+  </div>
+  <div class="master-right" [style.background-color]='white' style="background:transparent;padding:0px;">
+      <p-scrollPanel [style]="{width: '100%', height: '120px'}">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0px 0px 20px 0px;float:left;width:93%;">
+          <div *ngFor="let graphValue of graphValues" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 status-row">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0 bar-div">
+                  <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 bar-text paddingR0">{{graphValue.barName}}</div>
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 bar-value text-center">{{graphValue.barValue}}</div>
+              </div>
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0 bar-status">
+                    <hr class="back">
+                    <hr class="front"  [style.background-color]=this.barBackgroundColor [style.width.%]=graphValue.barValue>
+              </div> 
+          </div>
+        </div>
+      </p-scrollPanel>
+  </div>
+</div>
+

@@ -1,0 +1,26 @@
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 master-info">
+  <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 master-tabs padding0">
+         <ul>
+           <li>  <a [routerLink]="['/Content/MasterNumber', 'my']" routerLinkActive="router-link-active" #myMastNum="routerLinkActive" > 
+                     <img [src]="myMastNum.isActive?'../assets/images/my_m_.png':'../assets/images/my_m.png'">&nbsp;My Master Jobs </a> 
+            </li>
+           <li> 
+              <a [routerLink]="['/Content/MasterNumber', 'all']" routerLinkActive="router-link-active" #allMastNum="routerLinkActive"><img [src]="allMastNum.isActive?'../assets/images/all_m_.png':'../assets/images/all_m.png'"> &nbsp;All Master Jobs </a>
+           </li>
+         </ul>
+     </div> -->
+
+     <!-- <router-outlet></router-outlet> -->
+    <!-- <masternumber-grid></masternumber-grid>  -->
+
+    <p-tabView (onChange)="onTabChange($event)">
+        <p-tabPanel header="My Master Jobs" leftIcon="fa fa-user fa-lg">
+            <masternumber-grid></masternumber-grid> 
+        </p-tabPanel>
+        <p-tabPanel header="All Master Jobs" leftIcon="fa fa-users fa-lg">
+            <masternumber-grid></masternumber-grid> 
+        </p-tabPanel>
+    </p-tabView>
+</div>
+
+

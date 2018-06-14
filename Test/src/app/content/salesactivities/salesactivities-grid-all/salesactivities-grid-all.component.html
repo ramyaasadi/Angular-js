@@ -1,0 +1,23 @@
+<div class="row sale-file1">
+        <p-table [columns]="cols" [value]="saleActs" [paginator]="true" [rows]="10" >
+            <ng-template pTemplate="header" let-columns>
+                    <tr>
+                        <th *ngFor="let col of columns" [pSortableColumn]="col.field" [class]="!col.showData ? 'ui-table-hide-on-sm' : ''" >
+                            {{col.header}}
+                            <p-sortIcon [field]="col.field"></p-sortIcon>
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-saleAct >
+                        <tr>
+                                <td><span class="pending">{{saleAct.status}}</span></td>
+                                <td>{{saleAct.activityName }}</td>
+                                <td>{{saleAct.type}}</td>
+                                <td>{{saleAct.schdttm}}</td>
+                                <td>{{saleAct.salesrepren}}</td>
+                                <td>{{saleAct.description }}</td>
+                        </tr>
+                </ng-template>
+           
+        </p-table>
+</div>

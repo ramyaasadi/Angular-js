@@ -1,0 +1,27 @@
+
+<nav id="sidebar">
+    <!--<div class="sidebar-header">
+        <a routerLink="/" routerLinkActiveOptions="{exact: true}" >
+        <img class="logo" src="../assets/images/logo_256.png" width="100px;"></a>
+    </div>-->
+    <ul class="list-unstyled components">
+        <li  *ngFor="let menuItem of menuItems" >
+            <a  routerLink="{{menuItem.path}}" routerLinkActive="router-link-active">
+                <div *ngIf="currentURL!=menuItem.path">
+                        <img src="{{menuItem.imgsrc}}"> 
+                </div>
+                <div *ngIf="currentURL==menuItem.path">
+                    <img src="{{menuItem.activeImage}}"> 
+                </div>
+               <!--<img [src]="isActive ? '../../assets/images/dashboard_.png' : '../../assets/images/box.png'"-->
+               <span>{{menuItem.title}}</span>
+             </a>
+                
+
+        </li>
+
+    </ul>
+</nav>
+
+
+  

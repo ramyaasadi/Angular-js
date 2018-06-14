@@ -1,0 +1,158 @@
+<div class="row crm2">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right"><img src="./assets/images/add.png" (click)="showDialog()" style="cursor:pointer;"/></div>
+        <p-table [columns]="cols" [value]="warmleads" [paginator]="true" [rows]="10" >
+            <ng-template pTemplate="header" let-columns>
+                    <tr>
+                        <th *ngFor="let col of columns" [pSortableColumn]="col.field" [class]="!col.showData ? 'ui-table-hide-on-sm' : ''" >
+                            {{col.header}}
+                            <p-sortIcon [field]="col.field"></p-sortIcon>
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-warmlead >
+                        <tr>
+                                <td>{{warmlead.masterjobno}}</td>
+                                <td>{{warmlead.name }}</td>
+                                <td>{{warmlead.leadtype }}</td>
+                                <td>{{warmlead.address}}</td>
+                                <td>{{warmlead.phonenumber }}</td>
+                                <td>{{warmlead.fax}}</td>
+                                <td>{{warmlead.billingaddress}}</td>
+                                <td>{{warmlead.notes}}</td>
+                                <td style="text-align:center;"><img src="{{warmlead.assignto}}" (click)="showDialog1()"/></td>
+                        </tr>
+                    </ng-template>
+        </p-table>
+</div>
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 new-one" style="float:left;">
+        <p-dialog header="New Warmlead" [(visible)]="display" modal="modal" [responsive]="true" [width]="550">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 padding0" style="float:left;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Master Job No.</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <input type="text" style="width:100%"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 padding0" style="float:left;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Name</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <input type="text" style="width:100%"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 padding0" style="float:left;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Lead Type</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                    <select>
+                                        <option>Companies</option>
+                                        <option>Individuals</option>
+                                    </select>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 padding0" style="float:left;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Phone Number</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                    <input type="text" style="width:100%"/>
+                                </div>
+                            </div>
+                    </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;"> 
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 padding0" style="float:left;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Fax No.</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                    <input type="text" style="width:100%"/>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 padding0" style="float:left;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Address</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <input type="text" style="width:100%"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 padding0" style="float:left;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">City</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                    <input type="text" style="width:100%"/>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 padding0" style="float:left;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Sate</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                    <input type="text" style="width:100%"/>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 padding0" style="float:left;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Zip</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                    <input type="text" style="width:100%"/>
+                                </div>
+                            </div>
+                    </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 padding0" style="float:left;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Billing Address</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                    <input type="text" style="width:100%"/>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 padding0" style="float:left;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Note</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                    <input type="text" style="width:100%"/>
+                                </div>
+                            </div>
+                    </div>
+            </div>
+            <p-footer style="float:right;">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:5px 6px;">
+                    <button type="button"  (click)="display=false" style="background:#333;color:#FFF;padding:3px 10px;cursor:pointer;border:none;"><i class="fa fa-check"></i>&nbsp;Create</button>
+                    <button type="button" (click)="display=false" style="background:#333;color:#FFF;padding:3px 10px;cursor:pointer;border:none;"><i class="fa fa-times"></i>&nbsp;Cancel</button>
+                </div>
+            </p-footer>
+        </p-dialog>
+</div>
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 new-one" style="float:left;">
+        <p-dialog header="Assign To" [(visible)]="display1" modal="modal" [responsive]="true" [width]="250">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info" style="float:left;">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name" style="float:left;">Sales Representative</div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value" style="float:left;">
+                        <select style="width:100%;">
+                            <option>Sheryl Cruz</option>
+                            <option>Robin Lambert</option>
+                            <option>Jennie Hart</option>
+                            <option>Darnell	Briggs</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <p-footer style="float:right;">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:5px 6px;">
+                    <button type="button"  (click)="display1=false" style="background:#333;color:#FFF;padding:3px 10px;cursor:pointer;border:none;"><i class="fa fa-check"></i>&nbsp;Create</button>
+                    <button type="button" (click)="display1=false" style="background:#333;color:#FFF;padding:3px 10px;cursor:pointer;border:none;"><i class="fa fa-times"></i>&nbsp;Cancel</button>
+                </div>
+            </p-footer>
+        </p-dialog>
+</div>

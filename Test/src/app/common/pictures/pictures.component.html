@@ -1,0 +1,5 @@
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pics-show padding0" style="float:left;margin:8px 0px 20px 0px;">
+<!-- <p-galleria [images]="images" panelWidth="500" panelHeight="313" showCaption="true"></p-galleria> -->
+<p-galleria *ngIf="images!=undefined && images!=null && images.length>0" [images]="images" showCaption="true"></p-galleria>
+<span *ngIf="images ==false" style="display:block;text-align:center;color:#4d4d4d;font-size:20px;opacity:0.6;">Pictures are not Available.</span>
+</div>

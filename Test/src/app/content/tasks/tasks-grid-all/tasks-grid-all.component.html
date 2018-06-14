@@ -1,0 +1,26 @@
+<div class="row main-task">
+        <p-table [columns]="cols" [value]="taskall" [paginator]="true" [rows]="10" >
+            <ng-template pTemplate="header" let-columns>
+                    <tr>
+                        <th *ngFor="let col of columns" [pSortableColumn]="col.field" [class]="!col.showData ? 'ui-table-hide-on-sm' : ''" >
+                            {{col.header}}
+                            <p-sortIcon [field]="col.field"></p-sortIcon>
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-task >
+                        <tr>
+                                <td><span class="{{task.status}}"> {{ task.status }} </span></td>
+                                <td>{{task.subJobCode}}</td>
+                                <td style="text-align:center;">
+                                    <a routerLink="/Content/SubJobs/SubJobsDetails/353867">
+                                      <img [src]="task.jobImage" title="{{task.jobType}}">
+                                    </a>
+                                </td>
+                                <td>{{task.title }}</td>
+                                <td>{{task.dueDate}}</td>
+                                <td>{{task.responsible}}</td>
+                        </tr>
+                    </ng-template>
+        </p-table>
+</div>

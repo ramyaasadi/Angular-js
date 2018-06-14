@@ -1,0 +1,81 @@
+<div class="row">
+   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+       
+    <div class="col-lg-2 col-md-2 col-sm-push-12 col-xs-push-12 text-right new-job">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-left padding0" style="float:left;margin-bottom:20px;margin-top:3px;">
+                    <span class="master-title" style="color:#0033cc;font-size:21px;">Master Job Details</span>
+             </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 job-mail">
+                    <a href="mailto:demo@test.com" style="color:#FFF;text-align:center;display:block;"><span class="job-mail-icon"><img src="../assets/images/at.png"></span>
+                <span class="job-mail-text">Send Email</span></a>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right all-pics" style="cursor:pointer;">
+                <!-- <a href="/"> -->
+                    <span class="pic-icon"><img src="../assets/images/picture.png"></span>
+                    <span>Pictures</span>
+                <!-- </a> -->
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 job-add">
+                    <a routerLink="/Content/SubJobs/NewSubJobs/353867" style="color:#FFF;">
+                        <span class="job-icon"><img src="../assets/images/plus_icon_20.png"></span>
+                        <span class="job-text" style="text-align:center;display:block;">Add New File</span></a>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center total-jobs" (click)="scroll(target)">
+                <span>Total Files</span><span class="tj-count">2</span>
+            </div>
+        </div>
+            <div class="col-lg-10 col-md-10 col-sm-pull-12 col-xs-pull-12" style="float:left;">
+               <masternumber-data></masternumber-data>
+            </div>
+   </div>
+    
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0 jobs-details">
+     <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <common-notes></common-notes>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="float:left;">
+                        <common-contacts [mastNumHash]="parameterID" [contactsFor]="MasterNumber"></common-contacts>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="float:left;">
+                        <masternumber-whiteboard></masternumber-whiteboard>
+                </div>
+            </div>
+        </div>
+    </div>
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="font-size:23px;color:#0033cc;">
+      Files
+  </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 detailstable" #target>
+       <table datatable [dtOptions]="dtOptions" class="row-border hover">
+          <thead>
+            <tr>
+             <th>Current Status</th>
+              <th>File No.</th>
+              <th>Supervisor</th>
+              <th>Estimator</th>
+              <th>File Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="work-in-progress">Work in Progress</span> </td>
+              <td>FN_Williams_131_W</td>
+              <td>Eileen , Williams </td>
+              <td>Estimator</td>
+              <td><a routerLink="/Content/SubJobs/SubJobsDetails"><img src="../assets/images/water.png" title="water"></a></td>
+            </tr>
+            <tr>
+              <td><span class="pre-production">Pre-Production</span> </td>
+              <td>FN_Munoz_132_M</td>
+              <td>James , Munoz </td>
+              <td>Estimator</td>
+              <td><a routerLink="/Content/SubJobs/SubJobsDetails"><img src="../assets/images/mold.png" title="water"></a></td>
+            </tr>
+         </tbody>
+        </table>
+    </div>
+
+
+ </div>

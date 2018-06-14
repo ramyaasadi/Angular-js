@@ -1,0 +1,99 @@
+<div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 doc-div padding0">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0 doc-name" style="float:left;">Documents</div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0 doc-info">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right" style="margin-top:10px;margin-bottom:-2px;">
+                                <span style="cursor:pointer;" (click)="showDialog()"><img src="../assets/images/add.png"></span>
+                            </div>
+                     <p-table [value]="documents" >
+                         <ng-template pTemplate="header" >
+                            <tr>
+                                <th>&nbsp;</th>
+                                <th>Name</th>
+                                <th>Types</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-document >
+                                <tr>
+                                    <td><input type="checkbox" value="{{document.id}}" (change)="onCheckboxChange(document,$event)"/></td>
+                                    <td>{{document.name}}</td>
+                                    <td>{{document.type}}</td>
+                                </tr>
+                        </ng-template>
+                    </p-table>
+                    <div [hidden]="!showMessage" style="color:rgb(202, 10, 10);font-weight:600;letter-spacing:0.7px;width:80%;margin:10px 10%;">
+                            please select the documents you want to delete	
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center doc-btn" style="padding:8px 0px;float:left;">
+                                <!-- <button class="up" (click)="showDialog()">
+                                        <img src="../assets/images/add.png" style="width:30px;"><span>Add New</span>
+                                </button> -->
+                        <!-- <button class="up"><img src="../assets/images/upload.png"><span>Upload</span></button> -->
+                        <button class="del" *ngIf="documents!=null && documents!=undefined" (click)="deleteDocuments()"><img src="../assets/images/delete.png"><span>Delete</span></button>
+                    </div>
+                </div>
+            </div>
+</div>
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 new-one" style="float:left;">
+        <p-dialog header="Document" [(visible)]="display" modal="modal" width="450" [responsive]="true">
+            <form #newDocument="ngForm" enctype="multipart/form-data" (submit)="saveDocument(newDocument);" method="POST">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="float:left;">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 part-info padding0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Document Name</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                               <input type="text" [ngModel]="document?.name" type="text" 
+                                                        (ngModelChange)="document.name = $event" name="document.name" #docName="ngModel" required/>
+                                <div [hidden]="docName.valid || (docName.pristine && !newDocument.submitted)" style="color:rgb(202, 10, 10);font-weight:600;letter-spacing:0.7px;">
+                                        Document name is required
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 part-info padding0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Document Type</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <select [ngModel]="document?.category" type="text" 
+                                                        (ngModelChange)="document.category = $event" name="document.category" #docCategory="ngModel" required>
+                                    <option value="">Select</option>
+                                    <option value="Agreement">Agreement</option>
+                                    <option value="Working Estimate">Working Estimate</option>
+                                </select>
+                                <div [hidden]="docCategory.valid || (docCategory.pristine && !newDocument.submitted)" style="color:rgb(202, 10, 10);font-weight:600;letter-spacing:0.7px;">
+                                       Category is required
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="float:left;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Document Upload</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                            <input type="file" style="width:95%;outline:none;" #file (change)="onChange(file.files)" name="document.file" required/>
+                            <div [hidden]="file.valid || (!newDocument.submitted)" style="color:rgb(202, 10, 10);font-weight:600;letter-spacing:0.7px;">
+                                       Document is required
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                            
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="float:left;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Comments</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                               <textarea style="width:100%;height:80px;" [ngModel]="document?.comments" type="text" 
+                                                        (ngModelChange)="document.comments = $event" #docComments="ngModel" name="document.comments" required></textarea>
+                                <div [hidden]="docComments.valid || (docComments.pristine && !newDocument.submitted)" style="color:rgb(202, 10, 10);font-weight:600;letter-spacing:0.7px;">
+                                    Comments is required
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <p-footer>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;text-align:right;margin:8px 0px;">
+                    <button type="submit" pButton icon="fa-check" label="Create"></button>
+                    <button type="button" pButton icon="fa-close" (click)="display=false" label="Cancel"></button>
+                  </div>
+                </p-footer>
+            </form>
+        </p-dialog>
+</div>

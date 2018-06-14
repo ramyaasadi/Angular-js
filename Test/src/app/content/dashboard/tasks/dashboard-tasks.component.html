@@ -1,0 +1,45 @@
+
+<!-- <div class="tasklist">
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+        <thead>
+          <tr>
+            <th>Task</th>
+            <th>Status</th>
+            <th>Sub Job Code</th>
+            <th>Sub Job Type</th>
+            <th>Due Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let task of tasks">
+            <td>{{ task.title }}</td>
+            <td><span class="{{task.status}}"> {{ task.status }} </span></td>
+            <td>{{task.jobCode}}</td>
+            <td><img [src]="task.jobImage" title="{{task.jobType}}" /></td>
+            <td>{{ task.duedate}}</td>
+          </tr>
+        </tbody>
+        </table>
+</div> -->
+<div class="tasklist">
+  <p-table [columns]="cols" [value]="tasks" [scrollable]="true" scrollHeight="350px">
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th *ngFor="let col of columns" [pSortableColumn]="col.field" [class]="!col.showData ? 'ui-table-hide-on-sm' : ''" >
+                    {{col.header}}
+                    <p-sortIcon [field]="col.field"></p-sortIcon>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-task >
+                <tr>
+                        <td><span class="{{task.status}}"> {{ task.status }} </span></td>
+                        <td>{{task.jobCode}}</td>
+                        <td><a routerLink="/Content/SubJobs/SubJobsDetails/353867"><img [src]="task.jobImage" title="{{task.jobType}}" /></a></td>
+                        <td>{{task.title }}</td>
+                        <td>{{task.duedate}}</td>
+                </tr>
+        </ng-template>
+    </p-table>
+</div>
+

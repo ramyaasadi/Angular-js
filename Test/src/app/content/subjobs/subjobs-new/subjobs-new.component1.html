@@ -1,0 +1,107 @@
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 add-subjob"  style="float:left;">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-left" style="float:left;">
+                <span style="color:#0033cc;font-size:25px;">New File</span>
+         </div>
+    <form #f="ngForm"  class="add-newsub">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="float:left;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 diff-row" style="float:left;">
+                           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-name padding0"><img src="./assets/images/personal.png">Select File Types</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0 new-sub-img">
+                                    <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Select Sub Job Type</div> -->
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value text-center" style="margin-top:5px;">
+                                        <span *ngFor="let item of imagearray;let i=index">
+                                            <span *ngIf="item.imageActive">
+                                                <img src="{{item.jobActiveImage}}" title="{{item.jobName}}" style="cursor:pointer" (click)="onImgClick(i)"/>
+                                            </span>
+                                            <span *ngIf = "item.imageActive==false">
+                                                    <img src="{{item.jobInactiveImage}}" title="{{item.jobName}}" style="cursor:pointer" (click)="onImgClick(i)"/>
+                                            </span>
+                                                <!-- <img src= "{{item.imageActive}}?"{{item.jobActiveimage}}:{{item.jobInactiveImage}} title="{{item.jobInactiveImage}}" style="cursor:pointer" (click)="onImgClick(i)"/> -->
+                                               <!-- <span [(ngmodel)]="item.jobActiveImage"></span> -->
+                                               
+                                        </span>
+                                        <span class="selected-name">{{displayImageName}}</span>
+                                            <!-- <img src="../assets/images/Water_.png" title="Water" style="cursor:pointer" id="picture" (click)="onImgClick()"/>
+                                            <img src="../assets/images/Reconstruction_.png" title="Recon" style="cursor:pointer" disabled="otherimagedsbl"/>
+                                            <img src="../assets/images/Content_.png" title="Content" style="cursor:pointer" disabled="otherimagedsbl"/>
+                                            <img src="../assets/images/Mold_.png" title="Mold" style="cursor:pointer" disabled="otherimagedsbl"/>
+                                            <img src="../assets/images/Asbestos_.png" title="Asbestos" style="cursor:pointer" disabled="otherimagedsbl"/>
+                                            <img src="../assets/images/Board_.png" title="Board Up" style="cursor:pointer" disabled="otherimagedsbl"/>
+                                            <img src="../assets/images/Consulting_.png" title="Consulting" style="cursor:pointer" disabled="otherimagedsbl"/>
+                                            <img src="../assets/images/Bio_.png" title="Bio" style="cursor:pointer" disabled="otherimagedsbl"/> -->
+                                    </div>
+                            </div>
+                        </div>
+                        
+                        
+                </div><!-- End of Row -->
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="float:left;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 diff-row" style="float:left;">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-name padding0"><img src="./assets/images/personal.png">Roles</div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 part-info padding0">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Supervisor</div>
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                                <select>
+                                                    <option>Select</option>
+                                                    <option>Shannon</option>
+                                                    <option>Castro</option>
+                                                    <option>Wong</option>
+                                                    <option>Dennis</option>
+                                                </select>
+                                                    <!-- <p-autoComplete [(ngModel)]="selectedOwner" [suggestions]="filteredCustomerAddress" [size]="30" field="name"
+                                                        placeholder="Role" [minLength]="1"  name="selectedOwner"></p-autoComplete> -->
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 part-info padding0">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Estimator</div>
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                                    <select>
+                                                        <option>Select</option>
+                                                        <option>Rachael</option>
+                                                        <option>Claudia</option>
+                                                        <option>Carol</option>
+                                                        <option>Timothy</option>
+                                                    </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 part-info padding0">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Co-Ordinator</div>
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                                    <select>
+                                                        <option>Select</option>
+                                                        <option>Walker</option>
+                                                        <option>Castro</option>
+                                                        <option>Farmer</option>
+                                                        <option>Logan</option>
+                                                    </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 part-info padding0">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Finance</div>
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                                    <select>
+                                                        <option>Select</option>
+                                                        <option>Louise</option>
+                                                        <option>Rosemary</option>
+                                                        <option>April</option>
+                                                        <option>Leah</option>
+                                                    </select>
+                                            </div>
+                                        </div>
+        
+                            </div><!-- End of Diff Row -->
+                 </div>
+            </div><!-- End of Column Width 12 Div -->
+        </div><!-- End of Row --> 
+        <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right action-btn" style="margin-top:20px;">
+                                <button class="sav"><span><img src="./assets/images/save.png"></span>Save File</button>
+                                <button class="cancel"><span><img src="./assets/images/cancel.png"></span>Cancel</button>
+                        </div>
+                </div>
+        </div><!-- End of Row -->
+    </form>
+</div>

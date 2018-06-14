@@ -1,0 +1,20 @@
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 schedule-info">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 schedule-tabs padding0">
+               <ul>
+                 <li>  <a [routerLink]="['/Content/Schedule', 'Resource']" routerLinkActive="router-link-active" #Resource="routerLinkActive" > 
+                           <img [src]="Resource.isActive?'../assets/images/my_activity_.png':'../assets/images/my_activity.png'">&nbsp;Resource</a> 
+                  </li>
+                 <li> 
+                    <a [routerLink]="['/Content/Schedule', 'Equipment']" routerLinkActive="router-link-active" #Equipment="routerLinkActive" >
+                    <img [src]="Equipment.isActive?'../assets/images/equipments.png':'../assets/images/equipments_.png'"> &nbsp;Equipment</a>
+                 </li>
+               </ul>
+           </div>
+           
+           <div *ngIf="Resource.isActive" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0">
+                <schedule-grid></schedule-grid>
+           </div>
+           <div *ngIf="Equipment.isActive">
+               <p-schedule [events]="events1" [header]="header" [editable]="true" [contentHeight]="500"></p-schedule>
+           </div> 
+</div>

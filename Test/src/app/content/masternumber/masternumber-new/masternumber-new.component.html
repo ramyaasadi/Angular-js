@@ -1,0 +1,1028 @@
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 add-subjob"  style="float:left;margin-top:20px;">
+    <form #f="ngForm" (submit)="saveData(f);" class="add-newsub"  method="POST">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="float:left;">
+        <div class="row diff-row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-name padding0"><img src="./assets/images/personal.png">Information</div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 part-info padding0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Master Job Name</div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                         <input type="text" style="width:85%;" [(ngModel)]="masterName" name="masterName" required #mastername="ngModel"/>
+                         <div [hidden]="mastername.valid || (mastername.pristine && !f.submitted)" style="color:rgb(202, 10, 10);font-weight:600;letter-spacing:0.7px;">
+                            Master Job Name is required.	
+                         </div>
+                    </div>
+              </div>
+              
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 with-add padding0" style="float:left;">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Company Name</div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                        <p-autoComplete 
+                                [(ngModel)]="company"
+                                [suggestions]="filteredCompanies"
+                                (completeMethod)="filterCompany($event)"
+                                field="companyName" 
+                                [size]="30"
+                                [forceSelection]="true"
+                                [dropdown]="true"
+                                (ngModelChange)="company=$event;disablePropertyManager=false;"
+                                name="company"
+                                 (onClear)="onCompanyClear($event)" 
+                                 (onBlur)="onCompanyChange($event)"
+                                placeholder="Company Name">
+                            </p-autoComplete>
+                        <span (click)="showDialog1('Property Manager')"><img src="./assets/images/add.png"></span>
+                            <!-- <p-autoComplete 
+                                [(ngModel)]="selectedOwner" 
+                                [suggestions]="filteredCustomerNames"
+                                (completeMethod)="filterCustomer($event)" 
+                                [size]="30" 
+                                field="name"
+                                placeholder="Owner" 
+                                [minLength]="1"  
+                                name="selectedOwner"
+                                [forceSelection]="true"
+                                (onSelect)="onCustomerChange($event)"
+                                (onClear)="onCustomerClear($event)" 
+                                (onBlur)="onCustomerBlur($event)"                           
+                                >
+                            </p-autoComplete> -->
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 with-add padding0" style="margin-top:7px;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Property Manager Name</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <p-autoComplete 
+                                    [(ngModel)]="propertyManagerName"
+                                    [suggestions]="filteredManagersName"
+                                    (completeMethod)="filterManagerName($event)"
+                                    field="fullName" 
+                                    [size]="30"
+                                    [forceSelection]="true"
+                                    [dropdown]="true"
+                                    [disabled]="disablePropertyManager"
+                                    name="propertyManagerName"
+                                    placeholder="Property Manager Name">
+                                </p-autoComplete>
+                               <span (click)="showDialog2('Property Manager')"><img src="./assets/images/add.png"></span>
+                            </div>
+                    </div>
+                </div>
+            
+              <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Owner Name</div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value cust">
+                        <p-autoComplete 
+                           [(ngModel)]="selectedOwner" 
+                           [suggestions]="filteredCustomerNames"
+                           (completeMethod)="filterCustomer($event)" 
+                           [size]="30" 
+                           field="name"
+                           placeholder="Owner" 
+                           [minLength]="1"  
+                           name="selectedOwner"
+                           [forceSelection]="true"
+                           (onSelect)="onCustomerChange($event)"
+                           (onClear)="onCustomerClear($event)" 
+                           (onBlur)="onCustomerBlur($event)"                           
+                           >
+                        </p-autoComplete>
+                </div>
+              </div> -->
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0">
+
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 part-info padding0">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">First Name</div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                      <p-autoComplete 
+                                [(ngModel)]="selectedCustomerFirstName" 
+                                [suggestions]="filteredCustomerNames"
+                                (completeMethod)="filterCustomerFirstName($event)" 
+                                [size]="30" 
+                                field="firstName"
+                                placeholder="First Name" 
+                                [minLength]="1"  
+                                (ngModelChange)="selectedCustomerFirstName=$event"
+                                name="selectedCustomerFirstName"
+                                [forceSelection]="false"
+                                (onSelect)="onCustomerChange($event)"
+                                (onClear)="onCustomerClear($event)" 
+                                (onBlur)="onCustomerBlur($event)"  
+                                required #firstname="ngModel"                         
+                                >
+                            </p-autoComplete>
+                        <!--<input type="text" [ngModel]="customerBasicInfo?.firstName"
+                            (ngModelChange)="customerBasicInfo.firstName=$event"
+                        [readonly]="existingCustomer" name="customerBasicInfo.firstName" required #firstname="ngModel"/>-->
+                         <div [hidden]="firstname.valid || (firstname.pristine && !f.submitted)" style="color:rgb(202, 10, 10);font-weight:600;letter-spacing:0.7px;">
+                            First Name is required.	
+                         </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 part-info padding0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Last Name</div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                        <p-autoComplete 
+                                [(ngModel)]="selectedCustomerLastName" 
+                                [suggestions]="filteredCustomerNames"
+                                (completeMethod)="filterCustomerLastName($event)" 
+                                [size]="30" 
+                                field="lastName"
+                                placeholder="Last Name" 
+                                [minLength]="1"  
+                                (ngModelChange)="selectedCustomerLastName=$event"
+                                name="selectedCustomerLastName"
+                                [forceSelection]="false"
+                                (onSelect)="onCustomerChange($event)"
+                                (onClear)="onCustomerClear($event)" 
+                                (onBlur)="onCustomerBlur($event)"  
+                                required #lastname="ngModel"                         
+                                >
+                            </p-autoComplete>
+                            <!--<input type="text" [ngModel]="customerBasicInfo?.lastName"
+                                 (ngModelChange)="customerBasicInfo.lastName=$event"
+                                    [readonly]="existingCustomer"  name="customerBasicInfo.lastName" required #lastname="ngModel"/>-->
+                            <div [hidden]="lastname.valid || (lastname.pristine && !f.submitted)" style="color:rgb(202, 10, 10);font-weight:600;letter-spacing:0.7px;">
+                                Last Name is required.	
+                            </div>
+                    </div>
+                </div>
+              </div>
+
+              
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 part-info padding0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Email</div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value another">
+                        <input name="customerBasicInfo.email" [ngModel]="customerBasicInfo?.email" [pattern]="emailPattern" 
+                                (ngModelChange)="customerBasicInfo.email=$event"   
+                                #offEmail="ngModel" [readonly]="existingCustomer"> 
+                        <div *ngIf="offEmail.errors"> 
+                            <div *ngIf="offEmail.errors.pattern" style="color:rgb(202, 10, 10);font-weight:600;letter-spacing:0.7px;"> 
+                                Email is invalid
+                            </div>	
+                        </div> 
+                            <!--<input type="text" [ngModel]="customerBasicInfo?.email" 
+                                   (ngModelChange)="customerBasicInfo.email=$event"
+                                    [disabled]="existingCustomer"   name="customerEmail"/>-->
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 part-info padding0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Home Phone</div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+
+                    <p-inputMask mask="(999) 999-9999" [ngModel]="customerBasicInfo?.phone1" name="customerBasicInfo.phone1" 
+                            (ngModelChange)="customerBasicInfo.phone1 = $event" [readonly]="existingCustomer"
+                             placeholder="(999) 999-9999" [ngModelOptions]="{updateOn: 'blur'}">
+                    </p-inputMask>
+
+
+                            <!--<input type="text" [textMask]="{mask: mask}" [ngModel]="customerBasicInfo?.phone1"
+                              (input)="customerBasicInfo.phone1 = $event.target.value" 
+                              [disabled]="existingCustomer"  name="HomeNumber"/>-->
+                    </div>
+                </div>
+             </div>
+
+             
+             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 part-info padding0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Cell Number</div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+
+                    <p-inputMask mask="(999) 999-9999" [ngModel]="customerBasicInfo?.mobile" name="customerBasicInfo.mobile" 
+                            (ngModelChange)="customerBasicInfo.mobile = $event" [readonly]="existingCustomer"
+                             placeholder="(999) 999-9999" [ngModelOptions]="{updateOn: 'blur'}">
+                    </p-inputMask>
+
+
+                            <!--<input type="text" [ngModel]="customerBasicInfo?.mobile"  [textMask]="{mask: mask}"
+                             (input)="customerBasicInfo.mobile = $event.target.value" 
+                             [disabled]="existingCustomer" name="MobileNumber"/>-->
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 part-info padding0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Work Number</div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+
+                    <p-inputMask mask="(999) 999-9999" [ngModel]="customerBasicInfo?.workPhone" name="customerBasicInfo.workPhone" 
+                            (ngModelChange)="customerBasicInfo.workPhone = $event" [readonly]="existingCustomer"
+                             placeholder="(999) 999-9999" [ngModelOptions]="{updateOn: 'blur'}">
+                    </p-inputMask>
+
+
+                            <!--<input type="text" [ngModel]="customerBasicInfo?.workPhone"  [textMask]="{mask: mask}" 
+                             (input)="customerBasicInfo.workPhone = $event.target.value" 
+                             [disabled]="existingCustomer" name="WorkNumber"/>-->
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0">
+             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left">
+                <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Address1</div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                            <textarea [ngModel]="customerBasicInfo?.address1"
+                            (input)="customerBasicInfo.address1 = $event.target.value" 
+                             [readonly]="existingCustomer"  name="customerBasicInfo.address1"></textarea>
+                    </div>
+                </div> -->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0" style="float:left;">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">
+                    Loss Address
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                        <textarea [ngModel]="lossaddress1" [readonly]="isLossAddressSame" 
+                            (input)="lossaddress1 = $event.target.value"
+                            name="lossaddress1" style="width:93%;"></textarea>
+                    </div>
+    
+               </div>
+               <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 part-info padding0" style="float:left;margin:3px 0px;">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">City</div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                        <input type="text" [ngModel]="lossAddressCity" name="lossAddressCity"
+                            (input)="lossAddressCity = $event.target.value"  [readonly]="isLossAddressSame"   />
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 part-info padding0" style="float:left;margin:3px 0px;">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">State</div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                             <p-autoComplete 
+                               [ngModel]="lossAddressState"
+                               [suggestions]="filteredCustomerStates"
+                               (completeMethod)="filterStates($event)"
+                                [size]="30"
+                                 (ngModelChange)="lossAddressState = $event" 
+                               [forceSelection]="true"
+                               name="lossAddressState"
+                               [readonly]="isLossAddressSame"
+                               placeholder="State">
+                            </p-autoComplete>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 part-info padding0" style="float:left;margin:3px 0px;">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Zip</div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                             <p-inputMask [ngModel]="lossAddressZip" mask="99999"
+                                    (ngModelChange)="lossAddressZip = $event" 
+                                    [readonly]="isLossAddressSame" name="lossAddressZip" [style]="{'width':'78%'}">
+                             </p-inputMask>
+
+
+                </div>
+            </div>
+                <!-- <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 part-info padding0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">City</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                            <input type="text" [ngModel]="customerBasicInfo?.city" 
+                            (input)="customerBasicInfo.city = $event.target.value" 
+                             [readonly]="existingCustomer"  name="customerBasicInfo.city"/>
+                        </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 part-info padding0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">State</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                             <p-autoComplete 
+                               [ngModel]="customerBasicInfo?.state"
+                               [suggestions]="filteredCustomerStates"
+                               (completeMethod)="filterStates($event)"
+                                [size]="30"
+                                 (ngModelChange)="customerBasicInfo.state = $event" 
+                               [forceSelection]="true"
+                               name="customerBasicInfo.state"
+                                [readonly]="existingCustomer" 
+                               placeholder="State">
+                            </p-autoComplete>
+
+
+                        </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 part-info padding0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Zip</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <p-inputMask [ngModel]="customerBasicInfo?.zip" mask="99999"
+                                    (ngModelChange)="customerBasicInfo.zip = $event" 
+                                    [readonly]="existingCustomer" name="customerBasicInfo.zip">
+                             </p-inputMask>
+
+                        </div>
+                </div> -->
+             </div>
+
+                
+            </div><!-- End of Column 12 Div -->
+             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 part-info padding0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Tenant Name</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <input [(ngModel)]="tenantName" name="tenantName" type="text"/>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 part-info padding0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Tenant Number</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <input [(ngModel)]="tenantPhoneNumber" [textMask]="{mask: mask}" name="tenantPhoneNumber" type="text"/>
+                        </div>
+                    </div>
+              </div><!-- End of Column 12 Div -->
+             
+            
+             
+             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value" *ngIf="showSaveCustomer"> 
+                            <span class="loss-check" style="font-size:13px;color:#007acc;"><input type="checkbox" [(ngModel)]="saveCustomer" name="saveCustomer" [ngModel]="saveCustomer" >Save Owner</span>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- End of Column 12 div -->
+        </div><!-- End of Row --> 
+    </div><!-- End of Column Div 4 -->
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="float:left;">
+            <div class="row diff-row" >
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-name padding0"><img src="./assets/images/personal.png">Details</div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 padding0" style="float:left;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info" style="padding-left:0px;">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Cause of Loss</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                        <select 
+                                                [(ngModel)]="causeOfLossId" 
+                                                name="causeOfLossId" 
+                                                style="width:95%;"> 
+                                            <option [value]="-1" required >[Select Cause of Loss]</option>
+                                                        
+                                            <option 
+                                                    *ngFor="let causeOfLoss of causeOfLossIds"  
+                                                [ngValue]="causeOfLoss.configId"
+                                                [selected]="causeOfLoss.configId == -1"> {{causeOfLoss.configValue}} </option>
+                                        </select> 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 padding0" style="float:left;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Program Type</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                        <select [(ngModel)]="programTypeId" name="programTypeId" > 
+                                          <option value="" selected>[-- Select--] </option>
+                                          <option *ngFor="let PType of programtypes" [ngValue]="PType.programTypeId"> {{PType.programType}} </option>
+                                        </select>
+                                </div>
+                                </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 padding0" style="float:left;">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Year Built</div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                            <select [(ngModel)]="yearBuiltId" name="yearBuiltId" >
+                                              <option value="" [selected]="true">[-- Select--] </option> 
+                                              <option *ngFor="let yBuiltId of yearBuiltIds" [ngValue]="yBuiltId.configId"> {{yBuiltId.configValue}} </option>
+                                            </select>     
+                                        </div>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info" style="padding:0px;">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Property Type</div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                        <span class="type-radio" style="margin-top:2px;"><input type="radio" [(ngModel)]="propertyType"  value="Residential" name="propertyType"/>Residential</span>
+                                        <span class="type-radio" style="margin-top:2px;"><input type="radio"[(ngModel)]="propertyType"  value="Commercial" name="propertyType"/>Commercial</span>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 padding0" style="float:left;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Description</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                    <textarea [(ngModel)]="description" name="description" style="height:100px;"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                                
+                        </div>
+                    </div>
+                </div><!-- End of Row -->
+                
+        <div class="row diff-row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-name padding0"><img src="./assets/images/personal.png">Insurance</div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Pay</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                    <span class="loss-check"><input type="radio" [(ngModel)]="selfPay" [checked]="selfPay" [value]="true"
+                                            name="selfPay" >Self Pay</span>
+                                    <span class="loss-check"><input type="radio" name="selfPay" [(ngModel)]="selfPay" [checked]="!selfPay" [value]="false" >Insurance</span>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div *ngIf="!selfPay" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 padding0" style="float:left;">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info" style="padding:0px;">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Claim No.</div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                                <input [(ngModel)]="claimNumber" name="claimNumber" type="text"/>
+                                        </div>
+                                </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 padding0" style="float:left;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info" style="padding:0px;">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Policy No.</div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                           <input [(ngModel)]="policyNumber" name="policyNumber" type="text"/>
+                                    </div>
+                            </div>
+                        </div>
+        
+                        <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12 padding0" style="float:left;">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info" style="padding:0px;">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Insurance Company</div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                            <p-autoComplete 
+                                                [(ngModel)]="insuranceCompany" 
+                                                [suggestions]="filteredInsuranceCompanys" 
+                                                (completeMethod)="filterIsuranceCompany($event)" 
+                                                (ngModelChange)="insuranceCompany=$event;"
+                                                field="companyName"
+                                                [size]="30"
+                                                [forceSelection]="true"
+                                                [dropdown]="true"
+                                                placeholder="Insurance Company"
+                                                (onClear)="onInsuranceCompanyClear($event)"  
+                                                (onBlur)="onInsuranceCompanyChange($event)"
+                                                name="insuranceCompany" [inputStyle]="{'width':'87%'}">
+                                            </p-autoComplete>
+                                            <span (click)="showDialog1('Insurance Company')"><img src="./assets/images/add.png"></span>
+                                        </div>
+                                </div>
+                        </div>
+                    </div>
+            </div>
+            <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 diff-row" style="float:left;margin-bottom:5px;">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-name padding0"><img src="./assets/images/personal.png">Loss Address</div>
+                
+               
+            </div> -->
+        
+        
+    </div><!-- End of Column div 4 -->
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="float:left;">
+        <div class="row diff-row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-name padding0"><img src="./assets/images/personal.png">Contact Info</div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 with-add padding0" style="float:left;">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Agent Name</div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                             <p-autoComplete 
+                               [(ngModel)]="agentName"
+                               [suggestions]="filteredAgentsName"
+                               (completeMethod)="filterAgentName($event)"
+                               field="fullName" 
+                               [size]="30"
+                               [forceSelection]="true"
+                               [dropdown]="true"
+                               name="agentName"
+                               (onClear)="onAgentClear($event)" 
+                               placeholder="Agent Name">
+                            </p-autoComplete>
+                            <span (click)="showDialog('Insurance Agent');"><img src="./assets/images/add.png"></span>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 part-info with-add padding0" style="float:left;">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Adjuster Name</div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                            <p-autoComplete 
+                                [(ngModel)]="adjusterName"
+                                [suggestions]="filteredAdjustersName"
+                                (completeMethod)="filterAdjusterName($event)"
+                                field="fullName" 
+                                [size]="30"
+                                [forceSelection]="true"
+                                [dropdown]="true"
+                                name="adjusterName"
+                                 (onClear)="onAdjusterClear($event)" 
+                                placeholder="Adjuster Name">
+                            </p-autoComplete>
+                        <span (click)="showDialog('Adjuster')"><img src="./assets/images/add.png"></span>
+                    </div> 
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left">
+                
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 part-info with-add padding0" style="float:left;">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">TPA Name</div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                            <p-autoComplete 
+                                [(ngModel)]="tpaName"
+                                [suggestions]="filteredTpasName"
+                                (completeMethod)="filterTpaName($event)"
+                                field="fullName" 
+                                [size]="30"
+                                [forceSelection]="true"
+                                [dropdown]="true"
+                                name="tpaName"
+                                 (onClear)="onTPAClear($event)" 
+                                placeholder="TPA Name">
+                            </p-autoComplete>
+                        <span (click)="showDialog('Third Party Administrator')"><img src="./assets/images/add.png"></span>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 part-info padding0" style="float:left;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info with-add padding0">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Sales Representative</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                    <p-autoComplete 
+                                        [(ngModel)]="salesRepresentativeName"
+                                        [suggestions]="filteredSalesName"
+                                        (completeMethod)="filterSaleName($event)"
+                                        field="fullName" 
+                                        [size]="30"
+                                        [forceSelection]="true"
+                                        [dropdown]="true"
+                                        name="salesRepresentativeName"
+                                        placeholder="Sales Representative">
+                                    </p-autoComplete>
+                                    <span (click)="showDialog('Sales Representative')"><img src="./assets/images/add.png"></span>
+                                </div>
+                            </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 part-info with-add padding0" style="float:left;">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Referred Source</div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                            <p-autoComplete 
+                               [(ngModel)]="RSource" 
+                               [suggestions]="filteredSources" 
+                               (completeMethod)="filterSource($event)" 
+                               [size]="30"
+                               [forceSelection]="true"
+                               [dropdown]="true"
+                                placeholder="Referred Source" 
+                                name="RSource">
+                            </p-autoComplete>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 padding0" style="float:left;">
+                        
+                </div>
+                
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info with-add padding0" style="float:left;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Referred By</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value ref-by">
+                                <p-autoComplete 
+                                    [(ngModel)]="referredBy"
+                                    [suggestions]="filteredReferredBysName"
+                                    (completeMethod)="filterReferredByName($event)"
+                                    field="fullName" 
+                                    [size]="30"
+                                    [dropdown]="true"
+                                    name="referredBy"
+                                    (onBlur)="OnReferredByChange($event)"
+                                    placeholder="Referred By">
+                                </p-autoComplete>
+                            <!--<span (click)="showDialog('Referred By')"><img src="./assets/images/add.png"></span>-->
+                        </div>
+                </div>
+            </div>
+        </div>
+        </div><!-- End of Row -->
+        
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 diff-row" style="float:left;">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-name padding0"><img src="./assets/images/personal.png">Billing Address</div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0" style="float:left;margin:2px 0px;">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">
+                    <!-- <span class="billing-check" style="font-size:10px;margin-bottom:5px;"><input type="checkbox" [(ngModel)]="isBillingAddressSame" name="BillingAddressSame" (ngModelChange)="isBillingAddressChanged()" [ngModel]="isBillingAddressSame" ></span> -->
+                    <span class="billing-check" style="font-size:10px;margin-bottom:5px;"><input type="checkbox" [(ngModel)]="isBillingAddressSame" name="BillingAddressSame" (ngModelChange)="isBillingAddressSame = $event;isBillingAddressChanged()" ></span>
+                    <span class="billing-text">Same as Loss Address </span></div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                        <textarea [ngModel]="billingAddress" [readonly]="isBillingAddressSame" 
+                                (input)="billingAddress = $event.target.value"
+                                    name="billingAddress" style="width:95%;"></textarea>
+                                    
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 part-info padding0" style="float:left;margin:3px 0px;">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">City</div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                        <input type="text" [ngModel]="billingAddressCity" name="billingAddressCity"
+                                (input)="billingAddressCity = $event.target.value" [readonly]="isBillingAddressSame"/>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 part-info padding0" style="float:left;margin:3px 0px;">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">State</div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                        <!--<input type="text" [ngModel]="billingAddress?.state" name="billingAddressState"
+                                (input)="billingAddress.state = $event.target.value" [disabled]="isBillingAddressSame" />-->
+
+                             <p-autoComplete 
+                               [ngModel]="billingAddressState"
+                               [suggestions]="filteredCustomerStates"
+                               (completeMethod)="filterStates($event)"
+                                [size]="30"
+                                 (ngModelChange)="billingAddressState = $event" 
+                               [forceSelection]="true"
+                               name="billingAddressState"
+                               [readonly]="isBillingAddressSame"
+                               placeholder="State">
+                            </p-autoComplete>
+
+
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 part-info padding0" style="float:left;margin:3px 0px;">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Zip</div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                        <!-- <input type="text" [ngModel]="billingAddress?.zip" name="billingAddressZip"
+                                (input)="billingAddress.zip = $event.target.value" [readonly]="isBillingAddressSame" /> -->
+                                <p-inputMask [ngModel]="billingAddressZip" mask="99999"
+                                    (ngModelChange)="billingAddressZip = $event" 
+                                    [readonly]="isBillingAddressSame" name="billingAddressZip">
+                             </p-inputMask>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 diff-row" style="float:left;margin-top:5px;">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-name padding0"><img src="./assets/images/personal.png">Responsible Party</div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <span class="type-radio" style="color:#404040;">
+                                    <input type="radio" name="responsibleParty" [(ngModel)]="responsibleParty" value="Owner"/>Owner
+                                </span>
+                                <span class="type-radio" style="color:#404040;">
+                                    <input type="radio" name="responsibleParty" [(ngModel)]="responsibleParty" value="Property Manager"/>Property Manager
+                                </span>
+                                <span class="type-radio" style="color:#404040;">
+                                    <input type="radio" name="responsibleParty" [(ngModel)]="responsibleParty" value="Company"/>Company
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div><!-- End of column div 4 -->
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="float:left;">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right action-btn" style="margin-top:20px;padding-right:0px;">
+                                <a (click)="sendMail(f)" style="cursor: pointer;"><button class="sav-mail" type="button"><span><img src="./assets/images/mail.png"></span>Email</button></a>
+                                <a [href]="'mailto:demo@test.com' + emailLink" *ngIf="emailLink!=undefined" #sendMail [hidden]="true"><button class="sav-mail" type="button">Send</button></a>
+                                <a><button class="sav-add" type="button" (click)="addNewFile(f);"><span><img src="./assets/images/plus_icon.png"></span>Add New File</button></a>
+                                <button class="sav" type="submit"><span><img src="./assets/images/save.png"></span>Save</button>
+                                <button class="cancel" type="reset" (click)="f.reset();f.submitted=false;disablePropertyManager=true;"><span><img src="./assets/images/cancel.png"></span>Cancel</button>
+                        </div>
+                </div>
+            </div><!-- End of Row -->
+        </div><!-- End of Column div 12 -->
+     </div><!-- End of Column 12 Div -->
+    </form>
+</div>
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 new-one" style="float:left;">
+        <p-dialog header="Add {{this.contactDetails.contactType}}" [(visible)]="display" modal="modal" width="350" [responsive]="true" novalidate>
+            <form #newContact="ngForm" (submit)="saveContactData(newContact);" method="POST">
+                
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 padding0" style="float:left">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">First Name</div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value"><input type="text" [ngModel]="contactDetails?.firstName" name="contactDetails.firstName" class="form-control"
+                                        (ngModelChange)="contactDetails.firstName = $event" required #conFirstName="ngModel"/>
+                                            <div [hidden]="conFirstName.valid || (conFirstName.pristine && !newContact.submitted)" style="color:rgb(202, 10, 10);font-weight:600;letter-spacing:0.7px;">
+                                                    First Name is required.	
+                                            </div> 
+                                        </div>
+                                </div>
+                            </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 padding0" style="float:left;">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Last Name</div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                        <input type="text" [ngModel]="contactDetails?.lastName" name="contactDetails.lastName" 
+                                        (ngModelChange)="contactDetails.lastName = $event" required #conLastName="ngModel"/>
+                                        <div [hidden]="conLastName.valid || (conLastName.pristine && !newContact.submitted)" style="color:rgb(202, 10, 10);font-weight:600;letter-spacing:0.7px;">
+                                                Last Name is required.	
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;" *ngIf="contactDetails.contactType!='Insurance Agent' && contactDetails.contactType!='Sales Representative'">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Company Name</div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value" style="width: 97%">
+                                        <p-autoComplete 
+                                            [(ngModel)]="contactCompany"
+                                            [suggestions]="filteredContactCompanies"
+                                            (completeMethod)="filterContactCompany($event)"
+                                            field="companyName" 
+                                            [size]="30"
+                                            [forceSelection]="true"
+                                            [dropdown]="true"
+                                            name="contactCompany"
+                                            (onClear)="onConatctCompanyClear($event)" 
+                                            [disabled]="disableContactCompany"
+                                            placeholder="Company Name">
+                                       </p-autoComplete>
+                                        <span *ngIf="!disableContactCompany" (click)="showDialog1('TPA')"><img src="./assets/images/add.png"></span>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 padding0" style="float:left;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Email</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value"><input type="text" [ngModel]="contactDetails?.email" name="contactDetails.email"
+                                (ngModelChange)="contactDetails.email = $event" [pattern]="emailPattern"
+                                    (ngModelChange)="email=$event"   
+                                    #contactEmail="ngModel"> 
+                                    <div *ngIf="contactEmail.errors"> 
+                                        <div *ngIf="contactEmail.errors.pattern" style="color:rgb(202, 10, 10);font-weight:600;letter-spacing:0.5px;"> 
+                                            Email is invalid
+                                        </div>	
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 padding0" style="float:left;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Phone Number</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value"><p-inputMask mask="(999) 999-9999" type="text" [ngModel]="contactDetails?.phoneNo" name="contactDetails.phoneNo"
+                                (ngModelChange)="contactDetails.phoneNo = $event" placeholder="(999) 999-9999"></p-inputMask>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0 full">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Address</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value"><input type="text" [ngModel]="contactDetails?.address" name="contactDetails.address"
+                            (ngModelChange)="contactDetails.address = $event" style="width:93%"/></div>
+                        </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 padding0" style="float:left;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">City</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value"><input type="text" [ngModel]="contactDetails?.city" name="contactDetails.city"
+                                (ngModelChange)="contactDetails.city = $event"/></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 padding0" style="float:left;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">State</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value"> 
+                                    <p-autoComplete 
+                                    [ngModel]="contactDetails?.state"
+                                    [suggestions]="filteredCustomerStates"
+                                    (completeMethod)="filterStates($event)"
+                                    (ngModelChange)="contactDetails.state = $event"  
+                                    [forceSelection]="true"
+                                    name="contactDetails.state"
+                                    placeholder="State">
+                                    </p-autoComplete>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 padding0" style="float:left;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Zip</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                    <p-inputMask [ngModel]="contactDetails?.zip" mask="99999"
+                                            (ngModelChange)="contactDetails.zip = $event" 
+                                             name="contactDetails.zip">
+                                    </p-inputMask>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <p-footer>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;text-align:right;margin-top:5px;margin-bottom:8px;">
+                    <button type="submit" pButton icon="fa-check" label="Create"></button>
+                    <button type="button" pButton icon="fa-close" (click)="display=false;newContact.submitted=false;" label="Cancel"></button>
+                  </div>
+                </p-footer>
+            </form>
+        </p-dialog>
+    </div>
+<!--Add new -->
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 new-one" style="float:left;">
+            <p-dialog header="Add {{this.contactDetails.contactType}}" [(visible)]="display2" modal="modal" width="350" [responsive]="true" novalidate>
+                <form #newContact2="ngForm" (submit)="saveContactData(newContact2);" method="POST">
+                    
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 padding0" style="float:left">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">First Name</div>
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value"><input type="text" [ngModel]="contactDetails?.firstName" name="contactDetails.firstName" class="form-control"
+                                            (ngModelChange)="contactDetails.firstName = $event" required #contactFirstName="ngModel"/>
+                                                <div [hidden]="contactFirstName.valid || (contactFirstName.pristine && !newContact2.submitted)" style="color:rgb(202, 10, 10);font-weight:600;letter-spacing:0.7px;">
+                                                        First Name is required.	
+                                                </div> 
+                                            </div>
+                                    </div>
+                                </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 padding0" style="float:left;">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Last Name</div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                            <input type="text" [ngModel]="contactDetails?.lastName" name="contactDetails.lastName" 
+                                            (ngModelChange)="contactDetails.lastName = $event" required #contactLastName="ngModel"/>
+                                            <div [hidden]="contactLastName.valid || (contactLastName.pristine && !newContact2.submitted)" style="color:rgb(202, 10, 10);font-weight:600;letter-spacing:0.7px;">
+                                                    Last Name is required.	
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 padding0" style="float:left;">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Email</div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value"><input type="text" [ngModel]="contactDetails?.email" name="contactDetails.email"
+                                    (ngModelChange)="contactDetails.email = $event" [pattern]="emailPattern"
+                                        (ngModelChange)="email=$event"   
+                                        #contactEmail="ngModel"> 
+                                        <div *ngIf="contactEmail.errors"> 
+                                            <div *ngIf="contactEmail.errors.pattern" style="color:rgb(202, 10, 10);font-weight:600;letter-spacing:0.5px;"> 
+                                                Email is invalid
+                                            </div>	
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 padding0" style="float:left;">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Phone Number</div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value"><p-inputMask mask="(999) 999-9999" type="text" [ngModel]="contactDetails?.phoneNo" name="contactDetails.phoneNo"
+                                    (ngModelChange)="contactDetails.phoneNo = $event" placeholder="(999) 999-9999"></p-inputMask>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0 full">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Address</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value"><input type="text" [ngModel]="contactDetails?.address" name="contactDetails.address"
+                                (ngModelChange)="contactDetails.address = $event" style="width:93%"/></div>
+                            </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 padding0" style="float:left;">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">City</div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value"><input type="text" [ngModel]="contactDetails?.city" name="contactDetails.city"
+                                    (ngModelChange)="contactDetails.city = $event"/></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 padding0" style="float:left;">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">State</div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value"> 
+                                        <p-autoComplete 
+                                        [ngModel]="contactDetails?.state"
+                                        [suggestions]="filteredCustomerStates"
+                                        (completeMethod)="filterStates($event)"
+                                        (ngModelChange)="contactDetails.state = $event"  
+                                        [forceSelection]="true"
+                                        name="contactDetails.state"
+                                        placeholder="State">
+                                        </p-autoComplete>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 padding0" style="float:left;">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Zip</div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                        <p-inputMask [ngModel]="contactDetails?.zip" mask="99999"
+                                            (ngModelChange)="contactDetails.zip = $event" 
+                                             name="contactDetails.zip">
+                                        </p-inputMask>
+                                      </div>
+                                </div>
+                            </div>
+                    </div>
+                    <p-footer>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;text-align:right;margin-top:5px;margin-bottom:8px;">
+                        <button type="submit" pButton icon="fa-check" label="Create"></button>
+                        <button type="button" pButton icon="fa-close" (click)="display2=false;newContact2.submitted=false;" label="Cancel"></button>
+                      </div>
+                    </p-footer>
+                </form>
+            </p-dialog>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 new-one" style="float:left;">
+        <p-dialog header="Add {{companyLabel}}" [(visible)]="display1" modal="modal" [responsive]="true" [width]="350">
+            <form #newCompany="ngForm" (submit)="saveCompany(newCompany);" method="POST">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Company Name</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                            <input type="text" [ngModel]="companyDetails?.companyName" name="companyDetails.companyName"
+                                    (ngModelChange)="companyDetails.companyName = $event" required #companyname="ngModel" style="width:98%;"/>
+                            <div [hidden]="companyname.valid || (companyname.pristine && !newCompany.submitted)" style="color:rgb(202, 10, 10);font-weight:600;letter-spacing:0.7px;">
+                                    Company Name is required.	
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Address</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                            <textarea style="width:98%;" [ngModel]="companyDetails?.address" name="companyDetails.address"
+                                    (ngModelChange)="companyDetails.address = $event" required #companyAddress="ngModel"></textarea>
+                            <div [hidden]="companyAddress.valid || (companyAddress.pristine && !newCompany.submitted)" style="color:rgb(202, 10, 10);font-weight:600;letter-spacing:0.7px;">
+                                    Address is required.	
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 padding0" style="float:left;">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">City</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                            <input type="text" [ngModel]="companyDetails?.city" name="companyDetails.city"
+                                    (ngModelChange)="companyDetails.city = $event" required #companyCity="ngModel" style="width:98%;"/>
+                            <div [hidden]="companyCity.valid || (companyCity.pristine && !newCompany.submitted)" style="color:rgb(202, 10, 10);font-weight:600;letter-spacing:0.7px;">
+                                    City is required.	
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 padding0" style="float:left;">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">State</div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <p-autoComplete 
+                                            [ngModel]="companyDetails?.state"
+                                            [suggestions]="filteredCustomerStates"
+                                            (completeMethod)="filterStates($event)"
+                                            (ngModelChange)="companyDetails.state = $event"  
+                                            [forceSelection]="true"
+                                            name="companyDetails.state"
+                                            #companyState="ngModel"
+                                            placeholder="State">
+                                </p-autoComplete>
+                                <div [hidden]="companyState.valid || (companyState.pristine && !newCompany.submitted)" style="color:rgb(202, 10, 10);font-weight:600;letter-spacing:0.7px;">
+                                    State is required.	
+                                </div> 
+                         </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 padding0" style="float:left;">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Zip</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                            <p-inputMask [ngModel]="companyDetails?.zip" mask="99999"
+                                                (ngModelChange)="companyDetails.zip = $event" 
+                                                #companyZip="ngModel"
+                                                name="companyDetails.zip">
+                            </p-inputMask>
+                            <div [hidden]="companyZip.valid || (companyZip.pristine && !newCompany.submitted)" style="color:rgb(202, 10, 10);font-weight:600;letter-spacing:0.7px;">
+                                    Zip is required.	
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+                    <p-footer>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;text-align:right;margin-top:5px;margin-bottom:8px;">
+                                <button type="submit" pButton icon="fa-check" label="Create"></button>
+                                <button type="reset" pButton icon="fa-close" (click)="display1=false;newCompany.submitted=false;" label="Cancel"></button>
+                            </div>
+                    </p-footer>
+            </form>
+        </p-dialog>
+    </div>
+
+<div class="content-section implementation">
+    <p-growl [(value)]="msgs"></p-growl>
+</div>
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left;">
+    <email-masternumber [hidden]="true" *ngIf="sendEmail" [mastNumHash]="mastNumDetails.mastNumHash" #mailContent></email-masternumber>
+</div>

@@ -1,0 +1,10 @@
+<div *ngIf=isError>
+    <alert type="danger">
+    <strong>Error</strong> {{serverErrorMessage}}
+    </alert>
+</div>
+
+<horizontal-graph [graphValues]="graphValues" [imageSource]="imageSource"  [totalValue]="totalValue" [graphName]="graphName"  [barBackgroundColor]="barBackgroundColor">
+    </horizontal-graph>
+
+

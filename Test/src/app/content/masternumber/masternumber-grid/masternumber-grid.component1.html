@@ -1,0 +1,174 @@
+<div class="main-information">
+     <div class="col-lg-12 col-md-12 col-sm-pull-12 col-xs-pull-12 add-list">
+          <button class="reset" type="button" (click)="dt.reset()"> Reset </button>
+          <img src="../assets/images/Water_r.png" title="Water" (click)="dt.filterGlobal('Water', 'contains')">
+          <img src="../assets/images/Reconstruction_r.png" title="Recon" (click)="dt.filterGlobal('Recon', 'contains')">
+          <img src="../assets/images/Content_r.png" title="Content" (click)="dt.filterGlobal('Content', 'contains')">
+          <img src="../assets/images/Mold_r.png" title="Mold" (click)="dt.filterGlobal('Mold', 'contains')">
+          <img src="../assets/images/Asbestos_r.png" title="Asbestos" (click)="dt.filterGlobal('Asbestos', 'contains')">
+          <img src="../assets/images/Boardup_r.png" title="Board Up" (click)="dt.filterGlobal('Board', 'contains')">
+          <img src="../assets/images/Consulting_r.png" title="Consulting" (click)="dt.filterGlobal('Consulting', 'contains')">
+          <img src="../assets/images/Bio_r.png" title="Bio" (click)="dt.filterGlobal('Bio', 'contains')" >
+     </div>
+
+
+<p-table #dt [columns]="cols" [value]="masterNumbers" [paginator]="true" [rows]="10">
+        <ng-template pTemplate="caption"> 
+                <div style="text-align: left">        
+                    <!--<i class="fa fa-search" style="margin:4px 4px 0 0;color:#333333;"></i>-->
+                    <input type="text" pInputText size="50" [value]="" placeholder="Search..." (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:200px;" class="filter-in">
+                </div>
+            </ng-template>
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns" [pSortableColumn]="col.field" [class]="!col.showData ? 'ui-table-hide-on-sm' : ''" >
+                {{col.header}}
+                <p-sortIcon [field]="col.field"></p-sortIcon>
+            </th>
+        </tr>
+    </ng-template>
+  
+  
+    
+    <ng-template pTemplate="body" let-col >
+        <tr>
+                <td>{{col.masterNumber }}</td>
+                <td>{{col.customerName}}</td>
+                <td>{{col.address}}</td>
+                <td>{{col.city}}</td>
+                <td>{{col.state}}</td>
+                <td>{{col.zip}}</td>
+                 <td>{{col.phoneNo}}</td>
+                <td >
+                   <a routerLink="/Content/MasterNumber/MasterNumberDetails/{{col.masterHash}}"><span class="jobs-count">{{col.jobsCount}}</span></a>
+                   <span *ngFor="let tempjob of col.jobs"> 
+                     
+                    <img src="{{tempjob.jobImage}}" title="{{tempjob.jobType}}"  /> 
+                  </span>
+                 
+                </td>
+                <td style="text-align:center;" [class]="!col.showData ? 'ui-table-hide-on-sm' : ''"><a routerLink="/Content/SubJobs/NewSubJobs"><img src="../assets/images/job_icon.png"></a></td>
+                <!--<td><a routerLink="/Content/AddMasterNumber"><img src="../assets/images/edit.png" width="25px"></a></td>-->
+                <td >{{col.jobsList}}</td>
+     <!--/*.master-info table tbody tr td:last-child{display: none;} */ -->
+
+            
+        </tr>
+<!--
+
+        <tr *ngFor="let col of masterNumbers">
+            <td>{{col.masterNumber }}</td>
+           <td>{{col.customerName}}</td>
+           <td>{{col.address}}</td>
+           <td>{{col.city}},{{columns.zip}}</td>
+           <td>{{col.phoneNo}}</td>
+           <td >
+              <a routerLink="/Content/MasterNumber/MasterNumberDetails/:{{col.masterHash}}"><span class="jobs-count">{{col.jobs.length}}</span></a>
+              <img src="../assets/images/water_.png" title="Water"/>
+              <img src="../assets/images/recon_.png" title="Recon"/>
+              <img src="../assets/images/content_.png" title="Content"/>
+              <img src="../assets/images/mold_.png" title="Mold"/>
+              <img src="../assets/images/asbestos_.png" title="Asbestos"/>
+              <img src="../assets/images/boardup_.png" title="Board Up"/>
+              <img src="../assets/images/clipboard_.png" title="Clipboard"/>
+              <img src="../assets/images/bio_.png" title="Bio"/>
+              <span *ngFor="let tempjob of col.jobs"> 
+                
+               <img src="{{jobImagepath}}{{tempjob.jobType+'_r.png'}}"  /> 
+             </span>
+            
+           </td>
+           <td><img src="../assets/images/newsub_job.png"></td>
+           <td><img src="../assets/images/edit.png" width="25px"></td>
+ 
+         </tr>
+-->         
+    </ng-template>
+</p-table>
+
+
+
+<!--
+<p-table [value]="masterNumbers" >
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Master Number</th>
+            <th>Customer Name</th>
+            <th>Address</th>
+            <th>City/Zip</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-MasterNumberGrid>
+        <tr>
+            <td>{{MasterNumberGrid.masterNumber}}</td>
+            <td>{{MasterNumberGrid.customerName}}</td>
+            <td>{{MasterNumberGrid.address}}</td>
+            <td>{{MasterNumberGrid.city}}</td>
+        </tr>
+    </ng-template>
+</p-table>
+
+-->
+<!--
+    <div *ngIf=isError>
+          <alert type="danger">
+          <strong>Error</strong> {{serverErrorMessage}}
+          </alert>
+      </div>
+      
+    <table datatable  [dtOptions]="dtOptionsMasterNumber" [dtTrigger]="dtTrigger" dt-instance="dtInstance1"  class="row-border hover">
+       <thead>
+         <tr>
+           <th>Master Number</th>
+           <th>Customer Name</th>
+           <th>Address</th>
+           <th>City/Zip</th>
+           <th>Phone Number</th>
+           <th>Manage Jobs</th>
+           <th>New Sub Job</th>
+           <th>Edit</th>
+        </tr>
+       </thead>
+
+  
+
+        <tbody>
+          <tr *ngFor="let masterNumber of masterNumbers">
+             <td>{{ masterNumber.masterNumber }}</td>
+            <td>{{masterNumber.customerName}}</td>
+            <td>{{masterNumber.address}}</td>
+            <td>{{ masterNumber.city}},{{masterNumber.zip}}</td>
+            <td>{{ masterNumber.phoneNo}}</td>
+            <td >
+               <a routerLink="/Content/MasterNumber/MasterNumberDetails/:{{masterNumber.masterHash}}"><span class="jobs-count">{{masterNumber.jobs.length}}</span></a>
+               <img src="../assets/images/water_.png" title="Water"/>
+               <img src="../assets/images/recon_.png" title="Recon"/>
+               <img src="../assets/images/content_.png" title="Content"/>
+               <img src="../assets/images/mold_.png" title="Mold"/>
+               <img src="../assets/images/asbestos_.png" title="Asbestos"/>
+               <img src="../assets/images/boardup_.png" title="Board Up"/>
+               <img src="../assets/images/clipboard_.png" title="Clipboard"/>
+               <img src="../assets/images/bio_.png" title="Bio"/>
+
+              <span *ngFor="let tempjob of masterNumber.jobs"> 
+                 
+                <img src="{{jobImagepath}}{{tempjob.jobType+'_r.png'}}"  /> 
+              </span>
+             
+            </td>
+            <td><img src="../assets/images/newsub_job.png"></td>
+            <td><img src="../assets/images/edit.png" width="25px"></td>
+  
+          </tr>
+        </tbody>
+    </table>
+-->
+
+</div>
+
+
+          
+
+
+
+

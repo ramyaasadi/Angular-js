@@ -1,0 +1,19 @@
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 subjobs-info">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 subjobs-tabs padding0">
+           <ul>
+             <li>  <a [routerLink]="['/Content/SubJobs', 'my']" routerLinkActive="router-link-active" #mySubJobs="routerLinkActive" > 
+                       <img [src]="mySubJobs.isActive?'../assets/images/my_m_.png':'../assets/images/my_m.png'">&nbsp;My Files </a> 
+              </li>
+             <li> 
+                <a [routerLink]="['/Content/SubJobs', 'all']" routerLinkActive="router-link-active" #allSubJobs="routerLinkActive" >
+                <img [src]="allSubJobs.isActive?'../assets/images/all_m_.png':'../assets/images/all_m.png'"> &nbsp;All Files</a>
+             </li>
+             <li> 
+                <a [routerLink]="['/Content/SubJobs', 'Attention']" routerLinkActive="router-link-active" #attentionJobs="routerLinkActive"><img [src]="attentionJobs.isActive?'../assets/images/attention_icon_.png':'../assets/images/attention_icon.png'"> &nbsp; Attention Required Files</a>
+             </li>
+           </ul>
+       </div>
+       <subjob-grid></subjob-grid>
+</div>
+
+  

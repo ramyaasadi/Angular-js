@@ -1,0 +1,36 @@
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 subjobs-info">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 crm-tabs padding0">
+       <ul>
+          <li>  <a [routerLink]="['/Content/CRM', 'companies']" routerLinkActive="router-link-active" #companies="routerLinkActive"> 
+                  <img [src]="companies.isActive?'../assets/images/companies.png':'../assets/images/companies_.png'">&nbsp;Companies</a> 
+          </li>
+          <li>  <a [routerLink]="['/Content/CRM', 'individuals']" routerLinkActive="router-link-active" #individuals="routerLinkActive"> 
+                  <img [src]="individuals.isActive?'../assets/images/individual.png':'../assets/images/individual_.png'">&nbsp;Individuals</a> 
+          </li>
+          <li>  <a [routerLink]="['/Content/CRM', 'warmleads']" routerLinkActive="router-link-active" #warmleads="routerLinkActive"> 
+            <img [src]="warmleads.isActive?'../assets/images/lead.png':'../assets/images/lead_.png'">&nbsp;Warmleads</a> 
+          </li>
+          <li>  <a [routerLink]="['/Content/CRM', 'customers']" routerLinkActive="router-link-active" #customers="routerLinkActive"> 
+            <img [src]="customers.isActive?'../assets/images/customer.png':'../assets/images/customer_.png'">&nbsp;Customers</a> 
+          </li>
+          <li>  <a [routerLink]="['/Content/CRM', 'sales']" routerLinkActive="router-link-active" #sales="routerLinkActive"> 
+            <img [src]="sales.isActive?'../assets/images/sale.png':'../assets/images/sale_.png'">&nbsp;Sales Activities</a> 
+          </li>
+       </ul>
+   </div>
+   <div *ngIf="companies.isActive">
+        <app-companies></app-companies>
+   </div>
+   <div *ngIf="individuals.isActive">
+     <app-individuals></app-individuals>
+   </div>
+   <div *ngIf="warmleads.isActive">
+      <app-warmleads></app-warmleads>
+   </div>
+   <div *ngIf="customers.isActive">
+      <app-crm-customer></app-crm-customer>
+   </div>
+   <div *ngIf="sales.isActive">
+      <app-crm-salesact></app-crm-salesact>
+   </div>
+</div>

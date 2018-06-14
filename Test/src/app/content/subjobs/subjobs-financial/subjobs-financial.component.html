@@ -1,0 +1,211 @@
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 financial-div padding0" style="float:left">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0 financial-name">Financial</div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0 financial-info">
+            <p-tabView>
+                <p-tabPanel header="Estimate">
+                    
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="color:#333;font-size:13px;">
+                        <h6 style="display:inline-block;"><span style="color:#CCC;">Total Estimate Amount</span>&nbsp;: &nbsp;<span style="color:#444;">$260</span></h6>
+                        <span style="cursor:pointer;float:right;" (click)="showDialog()"><img src="../assets/images/add.png" title="Add New Estimate"></span>
+                    </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 esti-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Status</th>
+                                <th>Estimate Code</th>
+                                <th>Estimate Type</th>
+                                <th>Estimate Amount</th>
+                                <th>Estimated By</th>
+                                <th>Estimated Date & Time</th>
+                                <th>Restoration Items</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="pending">In Progress</span></td>
+                                <td>FN_Jackson_27_W_01</td>
+                                <td>Main</td>
+                                <td>$120</td>
+                                <td>Jhon</td>
+                                <td>02/27/2018 10:00AM</td>
+                                <!-- <td style="text-align:center;"><img src="../assets/images/resto.png" (click)="showDialog1()" style="cursor:pointer;"></td> -->
+                                <td style="text-align:center;"><img src="../assets/images/resto.png" (click)="show=!show"  style="cursor:pointer;"></td>
+                            </tr>
+                            <tr>
+                                <td><span class="pending">In Progress</span></td>
+                                <td>FN_Jackson_27_W_02</td>
+                                <td>Supplementary</td>
+                                <td>$140</td>
+                                <td>David</td>
+                                <td>02/28/2018 10:00AM</td>
+                                <td style="text-align:center;"><img src="../assets/images/resto.png" (click)="show=!show" style="cursor:pointer;"></td>
+                                <!-- <td style="text-align:center;"><img src="../assets/images/resto.png" (click)="showDialog1()" style="cursor:pointer;"></td> -->
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0 text-center" style="float:left;">
+                        
+                    </div> -->
+                  </div><!-- End of Table -->
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 restro-item" style="float:left;padding:0px;margin-top:20px;">
+                        <div *ngIf="show">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="color:#333;font-size:13px;">
+                                    <h6 style="display:inline-block;">Restoration Items</h6>
+                                    <span style="cursor:pointer;float:right;" (click)="showDialog1()"><img src="../assets/images/add.png" title="Add New Restoration Items"></span>
+                                </div>
+                                <p-table [columns]="cols" [value]="restros" [paginator]="true" [rows]="5" >
+                                        <ng-template pTemplate="header" let-columns>
+                                                <tr>
+                                                    <th *ngFor="let col of columns" [pSortableColumn]="col.field" [class]="!col.showData ? 'ui-table-hide-on-sm' : ''" >
+                                                        {{col.header}}
+                                                        <p-sortIcon [field]="col.field"></p-sortIcon>
+                                                    </th>
+                                                </tr>
+                                            </ng-template>
+                                            <ng-template pTemplate="body" let-restro >
+                                                    <tr>
+                                                            <td>{{restro.area }}</td>
+                                                            <td>{{restro.item}}</td>
+                                                            <td style="text-align:center;"><input type="checkbox" checked disabled/></td>
+                                                            <td style="text-align:center;"><input type="checkbox" checked disabled/></td>
+                                                            <td style="text-align:center;"><input type="checkbox" checked disabled/></td>
+                                                            <td>{{restro.uom}}</td>
+                                                            <td>{{restro.unitprice}}</td>
+                                                            <td>{{restro.totalunts}}</td>
+                                                            <td>{{restro.totalprice}}</td>
+                                                    </tr>
+                                            </ng-template>
+                                       
+                                </p-table>
+                        </div>
+                    </div>
+                </p-tabPanel>
+                <p-tabPanel header="Work Orders">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0 text-right" style="color:#333;font-size:13px;">
+                            <span style="cursor:pointer;"><img src="../assets/images/add.png" title="New Work Order"></span>
+                        </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 esti-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Work Order Number</th>
+                                    <th>Budgeted Hours</th>
+                                    <th>Budgeted Amount</th>
+                                    <th>Created By</th>
+                                    <th>Created Date & Time</th>
+                                    <th>Line Items</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>FN_Jackson_27_w_123</td>
+                                    <td>5 Hours</td>
+                                    <td>$120</td>
+                                    <td>Jhon</td>
+                                    <td>02/27/2018 10:00AM</td>
+                                    <td style="text-align:center;"><img src="../assets/images/line.png"></td>
+                                </tr>
+                                <tr>
+                                    <td>FN_Jackson_27_w_456</td>
+                                    <td>6 Hours</td>
+                                    <td>$140</td>
+                                    <td>David</td>
+                                    <td>02/28/2018 10:00AM</td>
+                                    <td style="text-align:center;"><img src="../assets/images/line.png"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div><!-- End of Table -->
+                </p-tabPanel>
+                <p-tabPanel header="Invoice">
+                    &nbsp;
+                </p-tabPanel>
+                <p-tabPanel header="Payments">
+                    &nbsp;
+                </p-tabPanel>
+            </p-tabView>
+            
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 new-one padding0" style="float:left">
+    <p-dialog header="New Estimate" [(visible)]="display" modal="modal" [responsive]="true" [width]="550">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left">
+              <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 padding0" style="float:left">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0" style="float:left">
+                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Estimate Code</div>
+                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                         <input type="text"/>
+                     </div>
+                </div>
+               </div>
+               <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 padding0" style="float:left">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0" style="float:left">
+                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Estimate Type</div>
+                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                             <select>
+                                 <option>Select</option>
+                                 <option>Main</option>
+                                 <option>Supplementary</option>
+                             </select>
+                         </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 padding0" style="float:left">
+                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0" style="float:left">
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Estimate Amount</div>
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <input type="text"/>
+                          </div>
+                     </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 padding0" style="float:left">
+                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0" style="float:left">
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Estimated Date & Time</div>
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                <input type="text"/>
+                          </div>
+                     </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 padding0" style="float:left">
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0" style="float:left">
+                           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Estimate By</div>
+                           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                               <input type="text"/>
+                           </div>
+                      </div>
+                     </div>
+                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 padding0" style="float:left">
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 part-info padding0" style="float:left">
+                               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-name">Status</div>
+                               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-value">
+                                   <select>
+                                       <option>Select</option>
+                                       <option>Inprogress</option>
+                                   </select>
+                               </div>
+                          </div>
+                      </div>
+                  </div>
+            <p-footer>
+                <button type="button" pButton icon="fa-check" (click)="display=false" label="Create"></button>
+                <button type="button" pButton icon="fa-close" (click)="display=false" label="Cancel"></button>
+            </p-footer>
+    </p-dialog>
+</div>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 new-one padding0" style="float:left">
+        <p-dialog header="Restoration" [(visible)]="display1" modal="modal" [responsive]="true" [width]="550">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding0" style="float:left">
+                    <subjob-restoration></subjob-restoration>
+                </div>
+                <p-footer>
+                    <button type="button" pButton icon="fa-check" (click)="display1=false" label="Create"></button>
+                    <button type="button" pButton icon="fa-close" (click)="display1=false" label="Cancel"></button>
+                </p-footer>
+        </p-dialog>
+    </div>

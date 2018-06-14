@@ -1,0 +1,134 @@
+<div class="row">
+<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 padding0" style="float:left">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-row" style="margin-top:5px;">
+                <span style="position:absolute;top:2px;right:2px;cursor:pointer;z-index:10;" (click)="showDialog()"><img src="../assets/images/edit_icon.png"></span>
+                  <div class="row">
+                          <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 padding0">
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">File Name</div>
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">
+                                  <span *ngIf="fileDetails !==undefined && fileDetails.jobCode !== undefined"> {{fileDetails.jobCode}}</span>
+                              </div>
+                          </div>
+                          <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 padding0">
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Owner Name</div>
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">
+                                  <span *ngIf="fileDetails !==undefined && fileDetails.customerName !== undefined"> {{fileDetails.customerName}}</span>
+                              </div>
+                          </div>
+                          <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 padding0">
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Email</div>
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">
+                                  <span *ngIf="fileDetails !==undefined && fileDetails.email !== undefined"> {{fileDetails.email}}</span>
+                              </div>
+                          </div>
+                          <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 padding0">
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Phone No.</div>
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">
+                                  <span *ngIf="fileDetails !==undefined && fileDetails.phoneNo !== undefined && fileDetails.phoneNo !== null" > {{fileDetails.phoneNo}}</span>
+                              </div>
+                          </div>
+                          <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 padding0">
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Cell No.</div>
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">
+                                  <span *ngIf="fileDetails !==undefined && fileDetails.mobile !== undefined && fileDetails.mobile !== null"> {{fileDetails.mobile}}</span>
+                              </div>
+                          </div>
+                          <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 padding0">
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Work No.</div>
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">
+                                  <span *ngIf="fileDetails !==undefined && fileDetails.workPhone !== undefined && fileDetails.workPhone !== null"> {{fileDetails.workPhone}}</span>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 padding0">
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Tenant Name</div>
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">
+                                  <span *ngIf="fileDetails !==undefined && fileDetails.tenantName !== undefined && fileDetails.tenantName !== null"> {{fileDetails.tenantName}}</span>
+                              </div>
+                          </div>
+                          <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 padding0">
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Tenant Number</div>
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">
+                                  <span *ngIf="fileDetails !==undefined && fileDetails.tenantNumber !== undefined && fileDetails.tenantNumber !== null"> {{fileDetails.tenantNumber}}</span>
+                              </div>
+                          </div>
+                          <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 padding0">
+                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Loss Address</div>
+                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">
+                                      <span *ngIf="fileDetails !==undefined && fileDetails.lossAddress !== undefined && fileDetails.lossAddress !== null"> {{fileDetails.lossAddress}}</span>
+                                  </div>
+                          </div>
+                          <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 padding0">
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Billing Address</div>
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">
+                                  <span *ngIf="fileDetails !==undefined && fileDetails.billingAddress !== undefined && fileDetails.billingAddress !== null"> {{fileDetails.billingAddress}}</span>
+                              </div>
+                          </div>
+                      </div>
+              </div>
+              
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-row" style="margin-top:5px;">
+                      <div class="row">
+                              <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 padding0">
+                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Cause of Loss</div>
+                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">
+                                      <span *ngIf="fileDetails !==undefined && fileDetails.causeOfLoss !== undefined && fileDetails.causeOfLoss !== null"> {{fileDetails.causeOfLoss}}</span>
+                                  </div>
+                              </div>
+                          <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 padding0">
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Program Type</div>
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">
+                                  <span *ngIf="fileDetails !==undefined && fileDetails.programType !== undefined && fileDetails.programType !== null"> {{fileDetails.programType}}</span>
+                              </div>
+                          </div>
+                          <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 padding0">
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Year Built</div>
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">
+                                  <span *ngIf="fileDetails !==undefined && fileDetails.yearBuilt !== undefined && fileDetails.yearBuilt !== null"> {{fileDetails.yearBuilt}}</span>
+                              </div>
+                          </div>
+                          <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 padding0">
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Property Type</div>
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">
+                                  <span *ngIf="fileDetails !==undefined && fileDetails.propertyType !== undefined && fileDetails.propertyType !== null"> {{fileDetails.propertyType}}</span>
+                              </div>
+                          </div>
+                           <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 padding0">
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text">Description</div>
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value">
+                                  <span *ngIf="fileDetails !==undefined && fileDetails.jobDesc !== undefined && fileDetails.jobDesc !== null"> {{fileDetails.jobDesc}}</span>
+                              </div>
+                          </div> 
+                          
+                      </div>
+              </div>
+              
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-row" style="margin-top:5px;">
+                      <!-- <common-insurance *ngIf="insurances !==undefined" [insurance]="insurances"></common-insurance> -->
+                      <common-insurance *ngIf="insurances !==undefined" [insurance]="insurances"></common-insurance>
+              </div>
+</div>
+<!--<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" style="float:left;padding-right:0px;">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 job-headLeft padding0">
+        Description
+    </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-row" style="margin-top:5px;padding:5px 0px;background:#946c9e;border:none;height:173px;">
+                <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-text" style="color:#FFF;">Description</div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 details-value" style="color:#FFF;">Use Precautions</div> 
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 whiteb-row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 whiteb-text padding0" style="color:#FFF;" *ngIf="fileDetails !==undefined && fileDetails.jobDesc !== undefined && fileDetails.jobDesc !== null">{{fileDetails.jobDesc}}</div>
+                </div>
+        </div>
+</div>-->
+<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" style="float:left;padding-right:0px;">
+<common-whiteboard *ngIf="description!=undefined" [description]="description" [add]="false" (updateDesc)="updateDescription($event)" ></common-whiteboard>
+</div>
+</div>
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 master-new-one" style="float:left;">
+        <p-dialog header="Edit" [(visible)]="display" modal="modal" width="1024" [responsive]="true">
+                <subjobs-popup *ngIf="display" [fileDetails]="fileDetails" [insurances]="insurances" (update)="updatefileData($event)"></subjobs-popup>
+                <button type="button" pButton icon="fa-close" (click)="display=false" label="Cancel" style="float:right;margin-right:-210px;"></button>
+        </p-dialog>
+</div>
